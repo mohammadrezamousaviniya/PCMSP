@@ -506,7 +506,6 @@
     <Folder Include="SQLScripts - Notes\1400_2021-22\Tir\" />
     <Folder Include="Views\HTML_Cash\" />
     <Folder Include="Views\master\" />
-    <Folder Include="Views\test\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -524,9 +523,6 @@
     <Content Include="Resources\CSS\web\fonts\fontawesome-webfont3e6e.woff" />
     <Content Include="Resources\CSS\web\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Resources\CSS\web\fonts\IRANSansWeb.ttf" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
