@@ -145,14 +145,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Resources\CSS\web\css\blocks.css" />
-    <Content Include="Resources\CSS\web\css\count.css" />
-    <Content Include="Resources\CSS\web\css\ion.rangeSlider.css" />
-    <Content Include="Resources\CSS\web\css\rtl.css" />
-    <Content Include="Resources\CSS\web\css\swiper.min.css" />
-    <Content Include="Resources\CSS\web\css\theme-styles.css" />
-    <Content Include="Resources\CSS\web\css\tshpCustome.css" />
-    <Content Include="Resources\CSS\web\css\widgets.css" />
+    <Content Include="Resources\CSS\web\css\PandaMainSiteCSS.css" />
     <Content Include="Resources\CSS\web\fonts\fIcon\flaticon.css" />
     <Content Include="Resources\CSS\web\fonts\fIcon\flaticon.html" />
     <Content Include="Resources\CSS\web\fonts\fIcon\Flaticon.svg" />
@@ -366,7 +359,7 @@
     <Content Include="Resources\CSS\web\img\video-thumb2.jpg" />
     <Content Include="Resources\CSS\web\img\video-thumb3.jpg" />
     <Content Include="Resources\CSS\web\img\zoom-img.png" />
-    <Content Include="Resources\JavaScript\web\js\jquery-3.3.1.js" />
+    <Content Include="Resources\JavaScript\web\js\jquery.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\ajax-pagination.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\bootstrap.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\crum-mega-menu.js" />
@@ -505,8 +498,6 @@
     <Folder Include="SQLScripts - Notes\1400_2021-22\Ordibehesht\" />
     <Folder Include="SQLScripts - Notes\1400_2021-22\Shahrivar\" />
     <Folder Include="SQLScripts - Notes\1400_2021-22\Tir\" />
-    <Folder Include="Views\HTML_Cash\" />
-    <Folder Include="Views\master\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -524,6 +515,11 @@
     <Content Include="Resources\CSS\web\fonts\fontawesome-webfont3e6e.woff" />
     <Content Include="Resources\CSS\web\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Resources\CSS\web\fonts\IRANSansWeb.ttf" />
+    <Content Include="Views\masters\webMaster.cshtml" />
+    <Content Include="Views\Media\index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Media\_ContanctUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

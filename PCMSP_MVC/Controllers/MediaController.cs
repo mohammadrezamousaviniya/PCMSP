@@ -6,13 +6,18 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
 
+
 namespace PCMSP_MVC.Controllers
 {
     public class MediaController : Controller
     {
-        public ActionResult Email()
+        public ActionResult index()
         {
-            return Content("Email");
+            return View();
+        }
+        public ActionResult ContactUs()
+        {
+            return View();
         }
 
     }
