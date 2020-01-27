@@ -142,13 +142,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Resources\CSS\web\css\blocks.css" />
@@ -455,12 +448,6 @@
     <Content Include="Resources\CSS\web\svg\submitRequest.svg" />
     <Content Include="Resources\CSS\web\svg\team.svg" />
     <Content Include="Resources\CSS\web\svg\videomask.svg" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="SQLScripts - Notes\1398_2020\Bahman\6th Bahman\Note.txt" />
     <Content Include="SQLScripts - Notes\1398_2020\Bahman\6th Bahman\SQL.txt" />
     <Content Include="SQLScripts - Notes\1398_2020\Bahman\7th Bahman\Note.txt" />
