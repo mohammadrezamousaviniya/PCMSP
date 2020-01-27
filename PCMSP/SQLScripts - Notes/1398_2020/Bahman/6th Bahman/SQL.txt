@@ -1,0 +1,36 @@
+USE [TSHP_PortalCMS]
+------------------------------------------------------------------------------------
+CREATE TABLE [dbo].[SEO_sitemapFilesRelation](
+	[idFatheRsitemap] [int] NOT NULL,
+	[idChilDsitemap] [int] NOT NULL
+) ON [PRIMARY]
+------------------------------------------------------------------------------------
+CREATE TABLE [dbo].[SEO_sitemapTYPEs](
+	[sitemapType] [int] IDENTITY(1,1) NOT NULL,
+	[sitemapName] [nvarchar](max) NULL,
+	[sitemapLocation] [nvarchar](max) NULL,
+	[sitemapGeneratedDate] [datetime] NULL,
+	[sitemapLastUpdate] [datetime] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+------------------------------------------------------------------------------------
+CREATE TABLE [dbo].[SEO_sitemapURLs](
+	[id_url] [int] IDENTITY(1,1) NOT NULL,
+	[loc] [nvarchar](max) NULL,
+	[changefreq] [int] NULL,
+	[sitemapType] [int] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+------------------------------------------------------------------------------------
+CREATE VIEW [dbo].[v_SEO_SitemapFamilyTree]
+AS
+SELECT        dbo.SEO_sitemapURLs.loc AS loc_father, dbo.SEO_sitemapURLs.changefreq AS changefreq_father, dbo.SEO_sitemapURLs.sitemapType AS sitemapType_father, dbo.SEO_sitemapTYPEs.sitemapName AS sitemapName_father, 
+                         dbo.SEO_sitemapTYPEs.sitemapLocation AS sitemapLocation_fathter, dbo.SEO_sitemapTYPEs.sitemapGeneratedDate AS sitemapGeneratedDate_father, 
+                         dbo.SEO_sitemapTYPEs.sitemapLastUpdate AS sitemapLastUpdate_father, dbo.SEO_sitemapFilesRelation.idFatheRsitemap, SEO_sitemapURLs_1.loc AS loc_Child, SEO_sitemapURLs_1.changefreq AS changefreq_Child, 
+                         SEO_sitemapTYPEs_1.sitemapName AS sitemapName_Child, SEO_sitemapTYPEs_1.sitemapLocation AS sitemapLocation_Child, SEO_sitemapTYPEs_1.sitemapGeneratedDate AS sitemapGeneratedDate_Child, 
+                         SEO_sitemapTYPEs_1.sitemapLastUpdate AS sitemapLastUpdate_Child, dbo.SEO_sitemapFilesRelation.idChilDsitemap
+FROM            dbo.SEO_sitemapURLs AS SEO_sitemapURLs_1 INNER JOIN
+                         dbo.SEO_sitemapTYPEs AS SEO_sitemapTYPEs_1 ON SEO_sitemapURLs_1.sitemapType = SEO_sitemapTYPEs_1.sitemapType INNER JOIN
+                         dbo.SEO_sitemapURLs INNER JOIN
+                         dbo.SEO_sitemapTYPEs ON dbo.SEO_sitemapURLs.sitemapType = dbo.SEO_sitemapTYPEs.sitemapType INNER JOIN
+                         dbo.SEO_sitemapFilesRelation ON dbo.SEO_sitemapURLs.id_url = dbo.SEO_sitemapFilesRelation.idFatheRsitemap ON SEO_sitemapURLs_1.id_url = dbo.SEO_sitemapFilesRel
+GO
+------------------------------------------------------------------------------------ation.idChilDsitemap

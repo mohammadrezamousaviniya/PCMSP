@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCMSP", "PCMSP\PCMSP.csproj", "{A0D8CC4B-F4C5-4114-898D-330DF7DC912C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0D8CC4B-F4C5-4114-898D-330DF7DC912C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D8CC4B-F4C5-4114-898D-330DF7DC912C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D8CC4B-F4C5-4114-898D-330DF7DC912C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D8CC4B-F4C5-4114-898D-330DF7DC912C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BDCBE11-53F2-44D4-88B5-E4E3F19FA16F}
+	EndGlobalSection
+EndGlobal
