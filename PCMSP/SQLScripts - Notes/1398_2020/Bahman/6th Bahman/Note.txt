@@ -1,2 +1,0 @@
-Azure Account Created ;
-designed (3x database tabel AND 1x Database View) -- SEO_sitemapFilesRelation , SEO_sitemapTYPEs ,SEO_sitemapURLs --/End_OF_Tables --v_SEO_SitemapFamilyTree -- /END_OF_View
