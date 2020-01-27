@@ -507,8 +507,8 @@
     <Content Include="Resources\CSS\web\fonts\fontawesome-webfont3e6e.woff" />
     <Content Include="Resources\CSS\web\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Resources\CSS\web\fonts\IRANSansWeb.ttf" />
-    <Content Include="Views\master.cshtml" />
-    <Content Include="Views\index.cshtml" />
+    <Content Include="Views\masters\webMaster.cshtml" />
+    <Content Include="Views\masters\index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
