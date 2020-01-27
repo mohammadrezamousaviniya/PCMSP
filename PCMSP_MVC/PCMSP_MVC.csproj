@@ -508,7 +508,7 @@
     <Content Include="Resources\CSS\web\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Resources\CSS\web\fonts\IRANSansWeb.ttf" />
     <Content Include="Views\masters\webMaster.cshtml" />
-    <Content Include="Views\masters\index.cshtml" />
+    <Content Include="Views\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
