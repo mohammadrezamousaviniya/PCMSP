@@ -181,7 +181,7 @@
     <Folder Include="SQLScripts - Notes\1400_2021-22\Ordibehesht\" />
     <Folder Include="SQLScripts - Notes\1400_2021-22\Shahrivar\" />
     <Folder Include="SQLScripts - Notes\1400_2021-22\Tir\" />
-    <Folder Include="Views\" />
+    <Folder Include="Views\HTML_Cash\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
