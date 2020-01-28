@@ -11,6 +11,7 @@ namespace PCMSP_MVC.Controllers
         // GET: test
         public ActionResult Index()
         {
+
             return Content("asdasdasd");
         }
     }
