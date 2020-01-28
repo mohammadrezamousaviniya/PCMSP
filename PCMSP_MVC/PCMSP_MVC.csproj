@@ -150,12 +150,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\testController.cs" />
+    <Compile Include="Controllers\userCustomerController.cs" />
     <Compile Include="DBConnect\ExcParameters.cs" />
     <Compile Include="DBConnect\PDBC.cs" />
     <Compile Include="DBConnect\TransActionReport.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Modules\Email\EmailJob.cs" />
     <Compile Include="Modules\Email\SendEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -481,7 +483,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Resources\CSS\admin\" />
     <Folder Include="Resources\CSS\web\coverage\" />
     <Folder Include="Resources\Images\" />
@@ -516,6 +517,8 @@
     <Folder Include="SQLScripts - Notes\1400_2021-22\Ordibehesht\" />
     <Folder Include="SQLScripts - Notes\1400_2021-22\Shahrivar\" />
     <Folder Include="SQLScripts - Notes\1400_2021-22\Tir\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\userCustomer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

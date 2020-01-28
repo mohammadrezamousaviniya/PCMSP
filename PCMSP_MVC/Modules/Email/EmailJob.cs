@@ -31,17 +31,13 @@ namespace PCMSP_MVC.Modules.Email
             {
                 count = dt.Rows.Count;
             }
-
             var mimeMessage = new MimeMessage();
             mimeMessage.From.Add(new MailboxAddress(Name, _EmailFrom));
-            mimeMessage.Subject = Subject; //Subject  
+            mimeMessage.Subject = Subject; 
             mimeMessage.Body = new TextPart("plain")
             {
                 Text = Body
             };
-
-
-
             using (var client = new SmtpClient())
             {
                 client.Connect("mail.tshpanda.com", 587, false);
@@ -64,7 +60,7 @@ namespace PCMSP_MVC.Modules.Email
 
                 Console.WriteLine("The mail has been sent successfully !!");
                 Console.ReadLine();
-                client.DisconnectAsync(true);
+                client.DisconnectAsync(true).Wait();
             }
 
         
