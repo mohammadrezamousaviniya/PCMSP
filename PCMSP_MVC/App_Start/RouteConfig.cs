@@ -20,8 +20,8 @@ namespace PCMSP_MVC
                 defaults: new { controller = "Media", action = "Index" }
             );
             routes.MapRoute(
-                "CustomerGeneric"
-                , "رباره-ما"
+                "ContactUS"
+                , "درباره-ما"
                 , new { controller = "Media",action= "ContactUs", id = "" }
             );
 

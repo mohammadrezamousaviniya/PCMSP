@@ -519,7 +519,7 @@
     <Content Include="Views\Media\index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Media\_ContanctUs.cshtml" />
+    <Content Include="Views\Media\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -11,14 +11,7 @@ namespace PCMSP_MVC.Controllers
 {
     public class MediaController : Controller
     {
-        public ActionResult index()
-        {
-            return View();
-        }
-        public ActionResult ContactUs()
-        {
-            return View();
-        }
+
 
     }
 }
