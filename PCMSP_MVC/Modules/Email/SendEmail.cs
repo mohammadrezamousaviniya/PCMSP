@@ -23,41 +23,23 @@ namespace PCMSP_MVC.Modules.Email
             db.DC();
         }
 
+        public void AddNewTemplate(string TempName, string Html)
+        {
+            PDBC db = new PDBC("DBConnectionString", true);
+            db.Connect();
+            db.Script("INSERT INTO [dbo].[EmailTemplate_tbl]VALUES('" + TempName + "','" + Html + "')");
 
-
-        //public void Send(DataTable dataTable, string EmailFrom, string Password, string Subject, string Body,string Name)
-        //{
-            
-        //    AddToEmailList(dataTable);
-
-        //    PDBC db = new PDBC("DBConnectionString", true);
-        //    db.Connect();
-        //    DataTable dt = db.Select("SELECT [Id],[EmailAddress]FROM [Core_Classes].[dbo].[EmailAddress_tbl]");
-        //    /////////////
-        //    ISchedulerFactory schedulerFactory=new StdSchedulerFactory();
-        //    IScheduler scheduler = schedulerFactory.GetScheduler();
-        //    scheduler.Start();
-        //    ITrigger trigger = TriggerBuilder.Create()
-        //        .WithSimpleSchedule(s => s.WithIntervalInSeconds(5).WithRepeatCount(dt.Rows.Count / 100))
-        //        .StartNow()
-        //        .Build();
-
-        //    IJobDetail job = JobBuilder.Create<EmailJob>()
-        //        .UsingJobData("_EmailFrom", EmailFrom)
-        //        .UsingJobData("_Password", Password)
-        //        .UsingJobData("Subject", Subject)
-        //        .UsingJobData("Body", Body)
-        //        .UsingJobData("Name", Name)
-        //        .Build();
-
-        //    await _scheduler.ScheduleJob(job, trigger);
-        //    return Content("done");
-        //}
-
+        }
 
         public async System.Threading.Tasks.Task EmailTask(
-            DataTable dataTable, string EmailFrom, string Password, string Subject, string Body,string Name)
+            DataTable dataTable, string EmailFrom, string Password, string Subject, string Body,string Name,bool IsHtml)
         {
+            int html = 0;
+            if (IsHtml)
+            {
+                html = 1;
+            }
+
 
 
             AddToEmailList(dataTable);
@@ -79,6 +61,7 @@ namespace PCMSP_MVC.Modules.Email
                     .UsingJobData("Subject", Subject)
                     .UsingJobData("Body", Body)
                     .UsingJobData("Name", Name)
+                    .UsingJobData("IsHtml",html)
                     .Build();
 
 
@@ -95,5 +78,49 @@ namespace PCMSP_MVC.Modules.Email
             }
         }
 
+
+        public async System.Threading.Tasks.Task EmailWithTemplate(
+            DataTable dataTable, string EmailFrom, string Password, string Subject,  string Name,string templateName,List<string> varList)
+        {
+            
+            AddToEmailList(dataTable);
+
+            PDBC db = new PDBC("DBConnectionString", true);
+            db.Connect();
+            DataTable dt = db.Select("SELECT [Id],[EmailAddress]FROM [dbo].[EmailModule_tbl]");
+            DataTable temp =db.Select("SELECT [HtmlCode]FROM [TSHP_PortalCMS].[dbo].[EmailTemplate_tbl]WHERE (TemplateName='"+templateName+"')");
+
+            string Body =string.Format(temp.Rows[0]["HtmlCode"].ToString(), varList);
+
+
+            try
+            {
+                var scheduler = await StdSchedulerFactory.GetDefaultScheduler();
+                if (!scheduler.IsStarted)
+                {
+                    await scheduler.Start();
+                }
+                var job = JobBuilder.Create<EmailJob>()
+                    .UsingJobData("_EmailFrom", EmailFrom)
+                    .UsingJobData("_Password", Password)
+                    .UsingJobData("Subject", Subject)
+                    .UsingJobData("Body",Body)
+                    .UsingJobData("Name", Name)
+                    .UsingJobData("IsHtml", 1)
+                    .Build();
+
+
+                var trigger = TriggerBuilder.Create()
+                    .WithSimpleSchedule(s => s.WithIntervalInSeconds(5).WithRepeatCount(dt.Rows.Count / 100))
+                    .StartNow()
+                    .Build();
+
+                await scheduler.ScheduleJob(job, trigger);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

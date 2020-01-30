@@ -20,6 +20,7 @@ namespace PCMSP_MVC.Modules.Email
 
         public string Body { get; set; }
         public string Name { get; set; }
+        public int IsHtml { get; set; }
 
         public async Task Execute(IJobExecutionContext context)
         {
@@ -35,10 +36,26 @@ namespace PCMSP_MVC.Modules.Email
             var mimeMessage = new MimeMessage();
             mimeMessage.From.Add(new MailboxAddress(Name, _EmailFrom));
             mimeMessage.Subject = Subject; //Subject  
-            mimeMessage.Body = new TextPart("plain")
+
+
+            if (IsHtml==1)
             {
-                Text = Body
-            };
+                BodyBuilder bodyBuilder = new BodyBuilder();
+                bodyBuilder.HtmlBody = Body;
+                bodyBuilder.TextBody = "this is a html message";
+                mimeMessage.Body = bodyBuilder.ToMessageBody();
+            }
+            else
+            {
+                mimeMessage.Body = new TextPart("plain")
+                {
+                    Text = Body
+                };
+
+            }
+
+
+
 
 
 

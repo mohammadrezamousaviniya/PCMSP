@@ -25,7 +25,11 @@ namespace PCMSP_MVC
                 , new { controller = "Media",action= "ContactUs", id = "" }
             );
 
-
+            routes.MapRoute(
+                "Niky"
+                , "{controller}/{action}"
+                
+            );
         }
     }
 }

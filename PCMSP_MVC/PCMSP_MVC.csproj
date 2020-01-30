@@ -464,6 +464,8 @@
     <Content Include="SQLScripts - Notes\1398_2020\Bahman\6th Bahman\SQL.txt" />
     <Content Include="SQLScripts - Notes\1398_2020\Bahman\7th Bahman\Note.txt" />
     <Content Include="SQLScripts - Notes\1398_2020\Bahman\7th Bahman\SQL.txt" />
+    <Content Include="SQLScripts - Notes\1398_2020\Bahman\8th Bahman\Note.txt" />
+    <Content Include="SQLScripts - Notes\1398_2020\Bahman\8th Bahman\SQL.txt" />
     <Content Include="SQLScripts - Notes\1398_2020\Note.txt" />
     <Content Include="SQLScripts - Notes\1398_2020\SQL.txt" />
     <Content Include="SQLScripts - Notes\1399_2020-21\Note.txt" />
