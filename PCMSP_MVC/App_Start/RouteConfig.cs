@@ -24,12 +24,12 @@ namespace PCMSP_MVC
                 , "درباره-ما"
                 , new { controller = "Media",action= "ContactUs", id = "" }
             );
-
             routes.MapRoute(
-                "Niky"
-                , "{controller}/{action}"
-                
+                name: "userCustomer",
+                url: "{controller}/{action}",
+                defaults: new { controller = "userCustomer" }
             );
+
         }
     }
 }

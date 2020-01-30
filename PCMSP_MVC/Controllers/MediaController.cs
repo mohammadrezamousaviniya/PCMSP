@@ -16,6 +16,10 @@ namespace PCMSP_MVC.Controllers
 {
     public class MediaController : Controller
     {
-        
+        public ActionResult Email()
+        {
+            return Content("Email");
+        }
+
     }
 }
