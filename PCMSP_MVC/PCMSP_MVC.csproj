@@ -379,6 +379,13 @@
     <Content Include="Resources\CSS\web\img\video-thumb2.jpg" />
     <Content Include="Resources\CSS\web\img\video-thumb3.jpg" />
     <Content Include="Resources\CSS\web\img\zoom-img.png" />
+    <Content Include="Resources\Images\amirhossein.png" />
+    <Content Include="Resources\Images\Fateme.png" />
+    <Content Include="Resources\Images\man2.png" />
+    <Content Include="Resources\Images\mohammadreza.png" />
+    <Content Include="Resources\Images\mohsen.png" />
+    <Content Include="Resources\Images\photo_2019-12-18_19-20-23.jpg" />
+    <Content Include="Resources\Images\photo_2019-12-25_21-57-22.jpg" />
     <Content Include="Resources\JavaScript\web\js\jquery.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\ajax-pagination.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\bootstrap.js" />
@@ -487,7 +494,6 @@
     <Folder Include="Data\" />
     <Folder Include="Resources\CSS\admin\" />
     <Folder Include="Resources\CSS\web\coverage\" />
-    <Folder Include="Resources\Images\" />
     <Folder Include="Resources\JavaScript\admin\" />
     <Folder Include="Resources\JavaScript\Plugins\" />
     <Folder Include="Resources\SCSS\" />

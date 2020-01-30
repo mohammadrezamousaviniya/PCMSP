@@ -1,8 +1,864 @@
-﻿
+﻿@model PCMSP_MVC.Models.Customer
 @{
     ViewBag.Title = "ContactUs";
     Layout = "~/Views/masters/webMaster.cshtml";
 }
 
-<h2>ContactUs</h2>
+<section>
+    <div class="container-fluid no-padding">
 
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding">
+            <!-- Leaflet map -->
+            <div id="map" style="height: 820px; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);width: 100%;">
+                    <div class="leaflet-pane leaflet-tile-pane" style="width: 100%;">
+                        <div class="leaflet-layer " style=" width: 100%; opacity: 1;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1619.89142682903!2d51.43799139699793!3d35.70696085958473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03a34272d39b%3A0xc976e4965a64ab4b!2zVHNoUGFuZGEg2KrZiNiz2LnZhyDYs9uM2LPYqtmFINmH2YjYtNmF2YbYryDZvtin2YbYr9in!5e0!3m2!1sen!2s!4v1580379230009!5m2!1sen!2s" height="820px" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End Leaflet map -->
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-1 col-md-12 col-sm-12 pt100 pb100">
+            <div class="breadcrumbs-wrap inline-items">
+                <a href="#" class="btn btn--transparent btn--round">
+                    <svg class="TSHPanda-icon TSHPanda-icon-home-icon-silhouette">
+                        <use xlink:href="#TSHPanda-icon-home-icon-silhouette"></use>
+                    </svg>
+                </a>
+
+                <ul class="breadcrumbs">
+                    <li class="breadcrumbs-item">
+                        <a href="@Url.Action("Index","Media")">صفحه اصلی</a>
+                        <svg class="TSHPanda-icon TSHPanda-icon-media-play-symbol">
+                            <use xlink:href="#TSHPanda-icon-media-play-symbol"></use>
+                        </svg>
+                    </li>
+                    <li class="breadcrumbs-item active">
+                        <span>رویدادها</span>
+                        <svg class="TSHPanda-icon TSHPanda-icon-media-play-symbol">
+                            <use xlink:href="#TSHPanda-icon-media-play-symbol"></use>
+                        </svg>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="crumina-module crumina-heading">
+                <h3 class="heading-title">با ما در تماس باشید</h3>
+                <div class="heading-text">
+                    راه های ارتباط با ما :
+                </div>
+            </div>
+            <div class="widget w-contacts w-contacts--style2 ">
+                <div class="contact-item display-flex">
+                    <svg class="TSHPanda-icon TSHPanda-icon-placeholder-3">
+                        <use xlink:href="#TSHPanda-icon-placeholder-3"></use>
+                    </svg>
+                    <span class="info">خیابان خواجه نصیر غربی(در امتداد خ طالقانی )، نرسیده به میدان سپاه پلاک ۱۷۹ زنگ دوم</span>
+                </div>
+                <div class="contact-item display-flex">
+                    <svg class="TSHPanda-icon TSHPanda-icon-telephone-keypad-with-ten-keys">
+                        <use xlink:href="#TSHPanda-icon-telephone-keypad-with-ten-keys"></use>
+                    </svg>
+                    <div class="info-wrap">
+                        <span class="info">021-77534206 </span>
+
+                    </div>
+                </div>
+                <div class="contact-item display-flex">
+                    <svg class="TSHPanda-icon TSHPanda-icon-message">
+                        <use xlink:href="#TSHPanda-icon-message"></use>
+                    </svg>
+                    <a href="#" class="info">info@tshpanda.com</a>
+                </div>
+
+                <a href="#" class="btn btn--grey btn--with-shadow js-message-popup cd-nav-trigger">
+                    ارسال پیام
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<section class="crumina-module crumina-module-slider medium-padding100">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-7 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
+                <div class="swiper-container swiper-swiper-unique-id-0 initialized swiper-container-horizontal swiper-container-fade" data-effect="fade" id="swiper-unique-id-0">
+
+                    <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="3" style="width: 625px; transform: translate3d(0px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
+                            <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
+
+                                <div class="teammembers-thumb" data-swiper-parallax="-100" style="transform: translate3d(-100px, 0px, 0px); transition-duration: 0ms;">
+                                    <img src="img/teammember9.jpg" alt="team member">
+                                </div>
+
+                                <div class="teammember-content" data-swiper-parallax="-300" style="transform: translate3d(-300px, 0px, 0px); transition-duration: 0ms;">
+
+                                    <div class="teammembers-item-prof">Copyrighter</div>
+
+                                    <a href="#" class="h5 teammembers-item-name">Jane Nguyen</a>
+
+                                    <p>
+                                        Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                                        est etiam est etiam processus dynamicus, qui sequitur.
+                                    </p>
+
+                                    <ul class="socials socials--round">
+                                        <li>
+                                            <a href="#" class="social__item facebook">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item twitter">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item googlePlus">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 625px; transform: translate3d(-625px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
+                            <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
+
+                                <div class="teammembers-thumb" data-swiper-parallax="-100" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                    <img src="~/Resources/Images/photo_2019-12-25_21-57-22.jpg" alt="team member" />
+                                </div>
+
+
+                                <div class="teammember-content" data-swiper-parallax="-300" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+
+                                    <div class="teammembers-item-prof">Professor</div>
+
+                                    <a href="#" class="h5 teammembers-item-name">Jonathan Miller</a>
+
+                                    <p>
+                                        Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                                        est etiam est etiam processus dynamicus, qui sequitur.
+                                    </p>
+
+                                    <ul class="socials socials--round">
+                                        <li>
+                                            <a href="#" class="social__item facebook">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item twitter">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item googlePlus">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 625px; transform: translate3d(-1250px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
+                            <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
+
+                                <div class="teammembers-thumb" data-swiper-parallax="-100" style="transform: translate3d(100px, 0px, 0px); transition-duration: 0ms;">
+                                    <img src="~/Resources/Images/photo_2019-12-18_19-20-23.jpg" alt="team member" />
+                                </div>
+
+
+                                <div class="teammember-content" data-swiper-parallax="-300" style="transform: translate3d(300px, 0px, 0px); transition-duration: 0ms;">
+
+                                    <div class="teammembers-item-prof">Manager</div>
+
+                                    <a href="#" class="h5 teammembers-item-name">Britney Simpson</a>
+
+                                    <p>
+                                        Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                                        est etiam est etiam processus dynamicus, qui sequitur.
+                                    </p>
+
+                                    <ul class="socials socials--round">
+                                        <li>
+                                            <a href="#" class="social__item facebook">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item twitter">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item googlePlus">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-swiper-slide-index="2" style="width: 625px; transform: translate3d(-1875px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
+                            <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
+
+                                <div class="teammembers-thumb" data-swiper-parallax="-100" style="transform: translate3d(100px, 0px, 0px); transition-duration: 0ms;">
+                                    <img src="img/teammember9.jpg" alt="team member">
+                                </div>
+
+                                <div class="teammember-content" data-swiper-parallax="-300" style="transform: translate3d(300px, 0px, 0px); transition-duration: 0ms;">
+
+                                    <div class="teammembers-item-prof">JS Developer</div>
+
+                                    <a href="#" class="h5 teammembers-item-name">Christian Bush</a>
+
+                                    <p>
+                                        Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                                        est etiam est etiam processus dynamicus, qui sequitur.
+                                    </p>
+
+                                    <ul class="socials socials--round">
+                                        <li>
+                                            <a href="#" class="social__item facebook">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item twitter">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item googlePlus">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-swiper-slide-index="3" style="width: 625px; transform: translate3d(-2500px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
+                            <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
+
+                                <div class="teammembers-thumb" data-swiper-parallax="-100" style="transform: translate3d(100px, 0px, 0px); transition-duration: 0ms;">
+                                    <img src="img/teammember9.jpg" alt="team member">
+                                </div>
+
+                                <div class="teammember-content" data-swiper-parallax="-300" style="transform: translate3d(300px, 0px, 0px); transition-duration: 0ms;">
+
+                                    <div class="teammembers-item-prof">Copyrighter</div>
+
+                                    <a href="#" class="h5 teammembers-item-name">Jane Nguyen</a>
+
+                                    <p>
+                                        Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                                        est etiam est etiam processus dynamicus, qui sequitur.
+                                    </p>
+
+                                    <ul class="socials socials--round">
+                                        <li>
+                                            <a href="#" class="social__item facebook">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item twitter">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item googlePlus">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 625px; transform: translate3d(-3125px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
+                            <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
+
+                                <div class="teammembers-thumb" data-swiper-parallax="-100" style="transform: translate3d(100px, 0px, 0px); transition-duration: 0ms;">
+                                    <img src="img/teammember9.jpg" alt="team member">
+                                </div>
+
+                                <div class="teammember-content" data-swiper-parallax="-300" style="transform: translate3d(300px, 0px, 0px); transition-duration: 0ms;">
+
+                                    <div class="teammembers-item-prof">Professor</div>
+
+                                    <a href="#" class="h5 teammembers-item-name">Jonathan Miller</a>
+
+                                    <p>
+                                        Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                                        est etiam est etiam processus dynamicus, qui sequitur.
+                                    </p>
+
+                                    <ul class="socials socials--round">
+                                        <li>
+                                            <a href="#" class="social__item facebook">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item twitter">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item googlePlus">
+                                                <svg class="TSHPanda-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                <div class="crumina-module-img-content">
+                    <div class="crumina-module crumina-heading">
+                        <h3 class="heading-title">تیم ما</h3>
+                        <div class="heading-text">Claritas est etiam processus dynamicus.</div>
+                    </div>
+                </div>
+                <div class="slider-slides with-thumbs align-left">
+                    <a href="#" class="slides-item slide-active">
+                        <div class="testimonial-img-author">
+                            <img src="~/Resources/Images/photo_2019-12-25_21-57-22.jpg" alt="author" />
+                        </div>
+
+                    </a>
+
+                    <a href="#" class="slides-item">
+                        <div class="testimonial-img-author">
+                            <img src="~/Resources/Images/photo_2019-12-18_19-20-23.jpg" alt="author" />
+                        </div>
+
+                    </a>
+
+                    <a href="#" class="slides-item">
+                        <div class="testimonial-img-author">
+                            <img src="img/author9.png" alt="author">
+                        </div>
+                    </a>
+
+                    <a href="#" class="slides-item">
+                        <div class="testimonial-img-author">
+                            <img src="img/author10.png" alt="author">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Testimonial Slider -->
+
+<section class="crumina-module crumina-module-slider background-contain bg-16 bg-blue-lighteen pt100">
+    <div class="container">
+        <div class="row">
+            <div class="crumina-module crumina-module-img-bottom">
+
+
+                <div class="col-lg-8 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="crumina-module-img-content">
+                                <div class="crumina-module crumina-heading">
+                                    <h2 class="heading-title">What Our Customers Say about TSHPanda app</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="swiper-container top-navigation" data-show-items="2">
+                                <div class="swiper-wrapper">
+
+                                    <div class="swiper-slide">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="crumina-module crumina-testimonial-item testimonial-item-arrow">
+                                                <div class="author-info-wrap">
+                                                    <div class="testimonial-img-author">
+                                                        <img src="img/author2.png" alt="author">
+                                                    </div>
+                                                    <div class="author-info">
+                                                        <a href="#" class="h6 author-name">Chris Miller</a>
+                                                        <div class="author-company">Student, 23 years old</div>
+                                                    </div>
+                                                </div>
+
+                                                <h6 class="testimonial-text">
+                                                    Qest etiam processus dynamicus, qui sequitur mutationem.
+                                                </h6>
+
+                                                <ul class="rait-stars">
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star-half-empty">
+                                                                <use xlink:href="#TSHPanda-icon-star-half-empty"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="crumina-module crumina-testimonial-item testimonial-item-arrow">
+                                                <div class="author-info-wrap">
+                                                    <div class="testimonial-img-author">
+                                                        <img src="img/author3.png" alt="author">
+                                                    </div>
+                                                    <div class="author-info">
+                                                        <a href="#" class="h6 author-name">Susan Meyer</a>
+                                                        <div class="author-company">Student, 20 years old</div>
+                                                    </div>
+                                                </div>
+
+                                                <h6 class="testimonial-text">
+                                                    Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius
+                                                    per seacula quarta decima decima.
+                                                </h6>
+
+                                                <ul class="rait-stars">
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="col-lg-12 col-md-4 col-sm-12">
+                                            <div class="crumina-module crumina-testimonial-item testimonial-item-arrow">
+                                                <div class="author-info-wrap">
+                                                    <div class="testimonial-img-author">
+                                                        <img src="img/author4.png" alt="author">
+                                                    </div>
+                                                    <div class="author-info">
+                                                        <a href="#" class="h6 author-name">Doe Simpson</a>
+                                                        <div class="author-company">Student, 23 years old</div>
+                                                    </div>
+                                                </div>
+
+                                                <h6 class="testimonial-text">
+                                                    Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.
+                                                </h6>
+
+                                                <ul class="rait-stars">
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                                                <use xlink:href="#TSHPanda-icon-star"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <svg class="TSHPanda-icon TSHPanda-icon-star-half-empty">
+                                                                <use xlink:href="#TSHPanda-icon-star-half-empty"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+            </div>
+
+            <!--Prev next buttons-->
+
+            <div class="btn-slider-wrap navigation-top-right">
+
+                <div class="btn-prev">
+                    <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-left-1">
+                        <use xlink:href="#TSHPanda-icon-arrow-left-1"></use>
+                    </svg>
+                    <svg class="TSHPanda-icon TSHPanda-icon-arrow-left1">
+                        <use xlink:href="#TSHPanda-icon-arrow-left1"></use>
+                    </svg>
+                </div>
+
+                <div class="btn-next">
+                    <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-right-1">
+                        <use xlink:href="#TSHPanda-icon-arrow-right-1"></use>
+                    </svg>
+                    <svg class="TSHPanda-icon TSHPanda-icon-arrow-right1">
+                        <use xlink:href="#TSHPanda-icon-arrow-right1"></use>
+                    </svg>
+                </div>
+
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <img class="img-bottom" src="~/Resources/Images/man21.png" alt="man">
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ... end Testimonial Slider -->
+<!-- Teammembers -->
+
+<section class="medium-padding100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                <div class="crumina-module crumina-heading align-center">
+                    <h2 class="heading-title">Meet Our Professional Team</h2>
+                    <div class="heading-text">
+                        Mirum est notare quam littera gothica, quam nunc putamus parum claram,
+                        anteposuerit litterarum formas humanitatis per.
+                    </div>
+                </div>
+            </div>
+
+            <div class="teammembers-wrap">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="crumina-module crumina-teammembers-item">
+
+                        <div class="teammembers-thumb">
+                            <img src="~/Resources/Images/mohammadreza.png" alt="team member">
+                        </div>
+                        
+
+                        <div class="teammember-content">
+
+                            <div class="teammembers-item-prof">Manager</div>
+
+                            <a href="#" class="h5 teammembers-item-name">Britney Simpson</a>
+
+                            <p>Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt est etiam.</p>
+
+                            <ul class="socials socials--round">
+                                <li>
+                                    <a href="#" class="social__item facebook">
+                                        <i class="TSHPanda-icon fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="social__item twitter">
+                                         <i class="TSHPanda-icon fa fa-instagram"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="social__item googlePlus">
+                                        <i class="TSHPanda-icon fa fa-github"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+
+                    <div class="crumina-module crumina-teammembers-item">
+
+                        <div class="teammembers-thumb">
+                            <img src="~/Resources/Images/mohsen.png" alt="team member">
+                        </div>
+                        
+
+                        <div class="teammember-content">
+
+                            <div class="teammembers-item-prof">Web Developer</div>
+
+                            <a href="#" class="h5 teammembers-item-name">Britney Simpson</a>
+
+                            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
+
+                            <ul class="socials socials--round">
+                                <li>
+                                    <a href="#" class="social__item facebook">
+                                        <i class="TSHPanda-icon fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="social__item twitter">
+                                        <i class="TSHPanda-icon fa fa-instagram"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="social__item googlePlus">
+                                        <i class="TSHPanda-icon fa fa-github"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="crumina-module crumina-teammembers-item">
+
+                        <div class="teammembers-thumb">
+                            <img src="~/Resources/Images/Fateme.png" alt="team member">
+                        </div>
+
+                        <div class="teammember-content">
+
+                            <div class="teammembers-item-prof">JS Developer</div>
+
+                            <a href="#" class="h5 teammembers-item-name">Christian Bush</a>
+
+                            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
+
+                            <ul class="socials socials--round">
+                                <li>
+                                    <a href="#" class="social__item facebook">
+                                        <i class="TSHPanda-icon fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="social__item twitter">
+                                        <i class="TSHPanda-icon fa fa-instagram"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="social__item googlePlus">
+                                        <i class="TSHPanda-icon fa fa-github"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="crumina-module crumina-teammembers-item">
+
+                        <div class="teammembers-thumb">
+                            <img src="~/Resources/Images/amirhossein.png" alt="team member">
+                        </div>
+                       
+
+                        <div class="teammember-content">
+
+                            <div class="teammembers-item-prof">Copyrighter</div>
+
+                            <a href="#" class="h5 teammembers-item-name">Jane Nguyen</a>
+
+                            <p>Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt est etiam.</p>
+
+                            <ul class="socials socials--round">
+                                <li>
+                                    <a href="#" class="social__item facebook">
+                                        <i class="TSHPanda-icon fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="social__item twitter">
+                                        <i class="TSHPanda-icon fa fa-instagram"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="social__item googlePlus">
+                                        <i class="TSHPanda-icon fa fa-github"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ... end Teammembers -->
+<!-- Send Message Popup -->
+
+<div class="window-popup message-popup">
+    <a href="#" class="popup-close js-popup-close cd-nav-trigger">
+        <span class="TSHPanda-icon " style="top:10px; font-size:40px;">
+            <i class="fa fa-times-circle-o fa-md fa-spin" style="top: 10px;"></i>
+        </span>
+    </a>
+
+    <div class="send-message-popup">
+        <h5>ارسال درخواست</h5>
+        <p>فرم زیر را پر کرده و برای ما ارسال نمایید کارشناسان ما در سریعترین زمان ممکنه با شما تماس خواهند گرفت</p>
+
+        @using (Html.BeginForm("submitContact", "userCustomer",
+            FormMethod.Post, new { @class = "form-validate contact-form" }))
+        {
+
+
+            <div class="with-icon">
+                @Html.TextBoxFor(m => m.name, new { placeholder = "نام کامل  یا نام شرکت", required = "required" })
+                <span class="TSHPanda-icon ">
+                    <i class="fa fa-user"></i>
+                </span>
+            </div>
+
+            <div class="with-icon">
+                @Html.TextBoxFor(m => m.email, new { placeholder = "آدرس پست الکترونیک", type = "email" })
+                <span class="TSHPanda-icon ">
+                    <i class="fa fa-envelope"></i>
+                </span>
+            </div>
+
+            <div class="with-icon">
+                @Html.TextBoxFor(m => m.phone, new { placeholder = "شماره تلفن", type = "tel", required = "required", @class = "with-icon" })
+                <span class="TSHPanda-icon ">
+                    <i class="fa fa-phone"></i>
+                </span>
+            </div>
+
+            <div class="with-icon">
+                @Html.TextBoxFor(m => m.subject, new { placeholder = "موضوع درخواست", type = "text", required = "required", @class = "with-icon" })
+                <span class="TSHPanda-icon ">
+                    <i class="fa fa-thumb-tack"></i>
+                </span>
+            </div>
+
+            <div class="with-icon">
+                @Html.TextAreaFor(m => m.message, new { placeholder = "پیام کامل شما", style = "height: 180px; max-width: 441px;", type = "text", required = "required", @class = "with-icon" })
+                <span class="TSHPanda-icon ">
+                    <i class="fa fa-align-justify"></i>
+                </span>
+            </div>
+            <button class="btn btn--green btn--with-shadow full-width" type="submit">
+                <span><i class="fa fa-cog fa-md fa-spin"></i> ارسال درخواست</span>
+            </button>
+        }
+    </div>
+</div>
+
+<!-- Send Message Popup -->

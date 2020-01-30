@@ -22,4 +22,14 @@ namespace PCMSP_MVC.Controllers
         }
 
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+    }
 }
