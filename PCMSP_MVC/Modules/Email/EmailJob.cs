@@ -32,30 +32,13 @@ namespace PCMSP_MVC.Modules.Email
             {
                 count = dt.Rows.Count;
             }
-
             var mimeMessage = new MimeMessage();
             mimeMessage.From.Add(new MailboxAddress(Name, _EmailFrom));
             mimeMessage.Subject = Subject; //Subject  
-
-
-            if (IsHtml==1)
+            mimeMessage.Body = new TextPart("plain")
             {
-                BodyBuilder bodyBuilder = new BodyBuilder();
-                bodyBuilder.HtmlBody = Body;
-                bodyBuilder.TextBody = "this is a html message";
-                mimeMessage.Body = bodyBuilder.ToMessageBody();
-            }
-            else
-            {
-                mimeMessage.Body = new TextPart("plain")
-                {
-                    Text = Body
-                };
-
-            }
-
-
-
+                Text = Body
+            };
 
 
 
@@ -81,7 +64,7 @@ namespace PCMSP_MVC.Modules.Email
 
                 Console.WriteLine("The mail has been sent successfully !!");
                 Console.ReadLine();
-                client.DisconnectAsync(true);
+                client.DisconnectAsync(true).Wait();
             }
 
         

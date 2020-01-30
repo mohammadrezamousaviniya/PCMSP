@@ -30,6 +30,10 @@ namespace PCMSP_MVC
                 defaults: new { controller = "userCustomer" }
             );
 
+            routes.MapRoute(
+                "Niky"
+                , "{controller}/{action}");
+
         }
     }
 }
