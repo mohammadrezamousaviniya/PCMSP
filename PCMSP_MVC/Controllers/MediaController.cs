@@ -31,5 +31,20 @@ namespace PCMSP_MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public ActionResult News()
+        {
+            return View();
+        }
+
+        public ActionResult test()
+        {
+            return View();
+        }
     }
 }
