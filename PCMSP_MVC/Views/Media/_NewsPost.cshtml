@@ -1,10 +1,12 @@
-﻿<article class="hentry post post-standard has-post-thumbnail sticky">
+﻿@model PCMSP_MVC.Models.NewsModel
+<article class="hentry post post-standard has-post-thumbnail sticky">
 
     <div class="post-thumb">
-        <img src="img/blog1.jpg" alt="post">
-        <a href="img/blog1.jpg" class="link-image js-zoom-image">
+        <img src="~/Resources/Images/Screenshot (106).png" alt="post">
+        <a href="~/Resources/Images/Screenshot (106).png" class="link-image js-zoom-image">
             <svg class="TSHPanda-icon TSHPanda-icon-zoom-increasing-button-outline"><use xlink:href="#TSHPanda-icon-zoom-increasing-button-outline"></use></svg>
         </a>
+       
         <a href="#" class="link-post">
             <svg class="TSHPanda-icon TSHPanda-icon-link-chain"><use xlink:href="#TSHPanda-icon-link-chain"></use></svg>
         </a>
@@ -50,36 +52,35 @@
         <div class="post__date">
 
             <time class="published" datetime="2017-03-20 12:00:00">
-                <a href="#" class="number">20</a>
-                <span class="month">March 2017</span>
-                <span class="day">Monday</span>
+                <a href="#" class="number">@Model.day</a>
+                <span class="month">@Model.year_month</span>
+                <span class="day">@Model.DayOfWeek</span>
             </time>
 
         </div>
 
         <div class="post__content-info">
 
-            <a href="17_news_details.html" class="h5 post__title entry-title">The Important Standard Post Format</a>
+            <a href="17_news_details.html" class="h5 post__title entry-title">@Model.title</a>
 
             <p class="post__text">
-                Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes
-                in futurumlaritas est etiam processus.
+                @Model.text_min
             </p>
 
             <div class="post-additional-info">
                 <span class="post__author author vcard">
-                    By
-                    <a href="#" class="fn">Admin</a>
+                    توسط
+                    <a href="#" class="fn">@Model.by</a>
 
                 </span>
 
                 <span class="category">
-                    In
-                    <a href="16_news.html">News</a>
+                    در گروه
+                    <a href="16_news.html">اخبار</a>
                 </span>
 
                 <span class="post__comments">
-                    <a href="#">0 <span>Comments</span></a>
+                    <a href="#">0 <span>نظرات</span></a>
                 </span>
 
                 <a href="17_news_details.html" class="btn-next">

@@ -1,0 +1,49 @@
+﻿@model PCMSP_MVC.Models.CustomerMessage
+<div class="swiper-slide">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="crumina-module crumina-testimonial-item testimonial-item-arrow">
+            <div class="author-info-wrap">
+                <div class="testimonial-img-author">
+                    <img src="@Model.ImagePath" alt="author">
+                </div>
+                <div class="author-info">
+                    <a href="#" class="h6 author-name">@Model.Name</a>
+                    <div class="author-company">@Model.Job</div>
+                </div>
+            </div>
+
+            <h6 class="testimonial-text">
+                @Model.Message
+            </h6>
+
+            <ul class="rait-stars">
+                @for (int i = 0; i < @Model.Stars; i++)
+                {
+                    
+                    <li>
+                        <a href="#">
+                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                <use xlink:href="#TSHPanda-icon-star"></use>
+                            </svg>
+                        </a>
+                    </li>
+                }
+
+                @for (int i = 0; i < 5 - @Model.Stars; i++)
+                {
+                    <li>
+                        <a href="#">
+                            <svg class="TSHPanda-icon TSHPanda-icon-star">
+                                <use xlink:href="#TSHPanda-icon-star-empty"></use>
+                            </svg>
+                        </a>
+                    </li>
+                }
+
+                
+            </ul>
+
+        </div>
+
+    </div>
+</div>

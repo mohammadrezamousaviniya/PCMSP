@@ -56,6 +56,9 @@
     <Reference Include="MailKit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
       <HintPath>..\packages\MailKit.2.5.0\lib\net46\MailKit.dll</HintPath>
     </Reference>
+    <Reference Include="MD.PersianDateTime, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MD.PersianDateTime.4.0.0\lib\MD.PersianDateTime.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MimeKit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
       <HintPath>..\packages\MimeKit.2.5.0\lib\net46\MimeKit.dll</HintPath>
@@ -158,10 +161,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerMessage.cs" />
+    <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\TeamMembers.cs" />
+    <Compile Include="ModelView\AboutUsModelView.cs" />
+    <Compile Include="ModelView\NewsModelView.cs" />
     <Compile Include="Modules\Email\EmailJob.cs" />
     <Compile Include="Modules\Email\SendEmail.cs" />
     <Compile Include="Modules\SMS\SendSMS.cs" />
     <Compile Include="Modules\SMS\SMSJob.cs" />
+    <Compile Include="Other\AppendUrl.cs" />
+    <Compile Include="Other\Date_TimeStamp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -387,6 +397,7 @@
     <Content Include="Resources\Images\man2.png" />
     <Content Include="Resources\Images\mohammadreza.png" />
     <Content Include="Resources\Images\mohsen.png" />
+    <Content Include="Resources\Images\Screenshot %28106%29.png" />
     <Content Include="Resources\JavaScript\web\js\jquery.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\ajax-pagination.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\bootstrap.js" />
@@ -554,6 +565,9 @@
     <Content Include="Views\Media\News.cshtml" />
     <Content Include="Views\Media\test.cshtml" />
     <Content Include="Views\Media\_NewsPost.cshtml" />
+    <Content Include="Views\Media\News_Details.cshtml" />
+    <Content Include="Views\Media\_CustomerMessage.cshtml" />
+    <Content Include="Views\Media\_teamMember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

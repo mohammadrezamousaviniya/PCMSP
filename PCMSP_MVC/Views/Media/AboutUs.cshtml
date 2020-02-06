@@ -1,4 +1,4 @@
-﻿
+﻿@model PCMSP_MVC.ModelView.AboutUsModelView
 @{
     ViewBag.Title = "AboutUs";
     Layout = "~/Views/masters/webMaster.cshtml";
@@ -103,186 +103,12 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="swiper-container top-navigation" data-show-items="2">
                                 <div class="swiper-wrapper">
+                                    
+                                    @foreach (var customer in @Model.customerMessages)
+                                    {
+                                        @Html.Partial("_CustomerMessage",customer)
+                                    }
 
-                                    <div class="swiper-slide">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="crumina-module crumina-testimonial-item testimonial-item-arrow">
-                                                <div class="author-info-wrap">
-                                                    <div class="testimonial-img-author">
-                                                        <img src="img/author2.png" alt="author">
-                                                    </div>
-                                                    <div class="author-info">
-                                                        <a href="#" class="h6 author-name">سعید اصغری </a>
-                                                        <div class="author-company">مدیرعامل ,نشریه ی پیشگامان تاسیسات</div>
-                                                    </div>
-                                                </div>
-
-                                                <h6 class="testimonial-text">
-                                                    از بچه های پاندا ممنونم که با بالاترین کیفیت و سریع ترین زمان ممکن پروژه رو به نحو احسنت انجام دادن 
-                                                </h6>
-
-                                                <ul class="rait-stars">
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star-half-empty">
-                                                                <use xlink:href="#TSHPanda-icon-star-half-empty"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="swiper-slide">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="crumina-module crumina-testimonial-item testimonial-item-arrow">
-                                                <div class="author-info-wrap">
-                                                    <div class="testimonial-img-author">
-                                                        <img src="img/author3.png" alt="author">
-                                                    </div>
-                                                    <div class="author-info">
-                                                        <a href="#" class="h6 author-name">محمد امین هاشمی</a>
-                                                        <div class="author-company">رئیس هیئت مدیره ی ویرا جلوه ی پارس</div>
-                                                    </div>
-                                                </div>
-
-                                                <h6 class="testimonial-text">
-                                                   شرکت توسعه سیستم هوشمند پاندا یکی از بهترین گروه های برنامه نویسی بود که تا بحال همکاری داشتیم
-                                                </h6>
-
-                                                <ul class="rait-stars">
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="swiper-slide">
-                                        <div class="col-lg-12 col-md-4 col-sm-12">
-                                            <div class="crumina-module crumina-testimonial-item testimonial-item-arrow">
-                                                <div class="author-info-wrap">
-                                                    <div class="testimonial-img-author">
-                                                        <img src="img/author4.png" alt="author">
-                                                    </div>
-                                                    <div class="author-info">
-                                                        <a href="#" class="h6 author-name">محمد  احسان بهرامی</a>
-                                                        <div class="author-company">رئیس هیئت مدیره شرکت رسام ایده مهام</div>
-                                                    </div>
-                                                </div>
-
-                                                <h6 class="testimonial-text">
-                                                   ما از خدمات پاندا استفاده کردیم بسیار همکاری و تجربه ی خوبی بود به شما هم توصیه می کنم.
-                                                </h6>
-
-                                                <ul class="rait-stars">
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star">
-                                                                <use xlink:href="#TSHPanda-icon-star"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <svg class="TSHPanda-icon TSHPanda-icon-star-half-empty">
-                                                                <use xlink:href="#TSHPanda-icon-star-half-empty"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
 
                                 </div>
 
@@ -340,162 +166,26 @@
             </div>
 
             <div class="teammembers-wrap">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="crumina-module crumina-teammembers-item">
 
-                        <div class="teammembers-thumb">
-                            <img src="~/Resources/Images/mohsen.png" alt="team member">
-                        </div>
+                @foreach (var member in @Model.teamMemberses)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        @if (@Model.teamMemberses.IndexOf(member) % 2 == 0)
+                        {
+                            @Html.Partial("_teamMember",member)
+                        }
 
-
-                        <div class="teammember-content">
-
-                            <div class="teammembers-item-prof">مدیرعامل</div>
-
-                            <a href="#" class="h5 teammembers-item-name">محسن کاشف</a>
-
-                            <p>Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt est etiam.</p>
-
-                            <ul class="socials socials--round">
-                                <li style="display:none">
-                                    <a href="#" class="social__item facebook">
-                                        <i class="TSHPanda-icon fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="https://instagram.com/m0hs_e_n?igshid=19zo68qzbf8n" class="social__item twitter">
-                                        <i class="TSHPanda-icon fa fa-instagram"></i>
-                                    </a>
-                                </li>
-
-                                <li style="display:none">
-                                    <a href="#" class="social__item googlePlus">
-                                        <i class="TSHPanda-icon fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-
-
-                        </div>
                     </div>
 
-                    <div class="crumina-module crumina-teammembers-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        @if (@Model.teamMemberses.IndexOf(member) % 2 == 1)
+                        {
+                            @Html.Partial("_teamMember", member)
+                        }
 
-                        <div class="teammembers-thumb">
-                            <img src="~/Resources/Images/amirhossein.png" alt="team member">
-                        </div>
-
-
-                        <div class="teammember-content">
-
-                            <div class="teammembers-item-prof">مسئول شبکه و امنیت</div>
-
-                            <a href="#" class="h5 teammembers-item-name">امیرحسین زنوزی</a>
-
-                            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
-
-                            <ul class="socials socials--round">
-                                <li>
-                                    <a href="#" class="social__item facebook">
-                                        <i class="TSHPanda-icon fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="https://instagram.com/amirho.mz77?igshid=1jcqz88wpyahm" class="social__item twitter">
-                                        <i class="TSHPanda-icon fa fa-instagram"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="social__item googlePlus">
-                                        <i class="TSHPanda-icon fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-
-
-                        </div>
                     </div>
-                </div>
+                }
 
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="crumina-module crumina-teammembers-item">
-
-                        <div class="teammembers-thumb">
-                            <img src="~/Resources/Images/mohammadreza.png" alt="team member">
-                        </div>
-
-                        <div class="teammember-content">
-
-                            <div class="teammembers-item-prof">سرپرست تیم برنامه نویسی</div>
-
-                            <a href="#" class="h5 teammembers-item-name">سید محمدرضا موسوی نیا</a>
-
-                            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
-
-                            <ul class="socials socials--round">
-                                <li>
-                                    <a href="mohammad-reza-mousavi-niya442879167" class="social__item facebook">
-                                        <i class="TSHPanda-icon fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="https://instagram.com/m.r.mousaviniya?igshid=15tu48d3xrq5t" class="social__item twitter">
-                                        <i class="TSHPanda-icon fa fa-instagram"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="https://github.com/mohammadrezamousaviniya" class="social__item googlePlus">
-                                        <i class="TSHPanda-icon fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-
-                    <div class="crumina-module crumina-teammembers-item">
-
-                        <div class="teammembers-thumb">
-                            <img src="~/Resources/Images/Fateme.png" alt="team member">
-                        </div>
-
-
-                        <div class="teammember-content">
-
-                            <div class="teammembers-item-prof">برنامه نویس</div>
-
-                            <a href="#" class="h5 teammembers-item-name">فاطمه نیک آئین</a>
-
-                            <p>Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt est etiam.</p>
-
-                            <ul class="socials socials--round">
-                                <li>
-                                    <a href="fatemeh-nikaeen-433a37164" class="social__item facebook">
-                                        <i class="TSHPanda-icon fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="https://instagram.com/nicky_1377?igshid=o5hplkimev8a" class="social__item twitter">
-                                        <i class="TSHPanda-icon fa fa-instagram"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="https://github.com/Nicky1377" class="social__item googlePlus">
-                                        <i class="TSHPanda-icon fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>

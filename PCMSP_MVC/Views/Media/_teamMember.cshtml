@@ -1,0 +1,39 @@
+﻿@model PCMSP_MVC.Models.TeamMembers
+<div class="crumina-module crumina-teammembers-item">
+
+    <div class="teammembers-thumb">
+        <img src="@Model.ImagePath" alt="team member">
+    </div>
+
+
+    <div class="teammember-content">
+
+        <div class="teammembers-item-prof">@Model.Job</div>
+
+        <a href="#" class="h5 teammembers-item-name">@Model.name</a>
+
+        <p>@Model.Tozihat</p>
+
+        <ul class="socials socials--round">
+            <li>
+                <a href="@Model.linkedin" class="social__item facebook">
+                    <i class="TSHPanda-icon fa fa-linkedin"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="@Model.Instagram" class="social__item twitter">
+                    <i class="TSHPanda-icon fa fa-instagram"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="@Model.Github" class="social__item googlePlus">
+                    <i class="TSHPanda-icon fa fa-github"></i>
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+</div>
