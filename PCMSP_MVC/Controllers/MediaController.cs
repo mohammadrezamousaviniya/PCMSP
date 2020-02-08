@@ -92,62 +92,197 @@ namespace PCMSP_MVC.Controllers
 
         public ActionResult News()
         {
-            var Datee = DateTime.Now;
-            
-            PersianDateTime persian=new PersianDateTime(Datee);
-            
-            
-            
+
+            Date_TimeStamp dateTimeStamp = new Date_TimeStamp();
+            PDBC db = new PDBC("DBConnectionString", true);
+            db.Connect();
+            DataTable dt = db.Select(
+                "SELECT [Id],[Title],[Text_min],[Text],[WrittenBy],[Date],[ImagePath],[ImageValue],[InGroup] ,(SELECT count(*) FROM [Comment_tbl]WHERE PostId=[Post_tbl].[Id])as number FROM [TSHP_PortalCMS].[dbo].[Post_tbl]");
+
+
             List<NewsModel> news=new List<NewsModel>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
+                DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[i]["Date"].ToString());
+                PersianDateTime persian = new PersianDateTime(date);
                 news.Add(new NewsModel()
                 {
-                    title = "موضوع"+i,
-                    text="متن"+i,
-                    by = "نیکی",
-                    ImagePath = "~/Resources/Images/Screenshot(106).png",
+                    Id =(int)dt.Rows[i]["Id"],
+                    title = dt.Rows[i]["Title"].ToString(),
+                    text_min= dt.Rows[i]["Text_min"].ToString(),
+                    by = dt.Rows[i]["WrittenBy"].ToString(),
+                    ImagePath = dt.Rows[i]["ImagePath"].ToString(),
                     day = persian.Day.ToString(),
                     year_month = persian.GetLongMonthName+"  "+ persian.Year,
-                    DayOfWeek = persian.GetLongDayOfWeekName
+                    DayOfWeek = persian.GetLongDayOfWeekName,
+                    InGroup = dt.Rows[i]["InGroup"].ToString(),
+                    Comments__ = Convert.ToInt32(dt.Rows[i]["number"].ToString())
 
                 });
             }
+            ///////////end news
+            
+            ///////latest news
+            List<LatestNewsModel> latest=new List<LatestNewsModel>();
+            DataTable latest_dt =
+                db.Select(
+                    "SELECT TOP 5 [Id],[Title],[Date],[ImagePath],[ImageValue] FROM [Post_tbl] order by(Date)DESC");
+
+            for (int i = 0; i < latest_dt.Rows.Count; i++)
+            {
+
+                DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[i]["Date"].ToString());
+                PersianDateTime persianDateTime=new PersianDateTime(date);
+                var Late=new LatestNewsModel()
+                {
+                    Id =Convert.ToInt32(latest_dt.Rows[i]["Id"]),
+                    title = latest_dt.Rows[i]["Title"].ToString(),
+                    date = persianDateTime.ToString(),
+                    ImagePath = latest_dt.Rows[i]["ImagePath"].ToString()
+                };
+                latest.Add(Late);
+            }
+            //////// latest end
+
+            ///////popular news
+            List<LatestNewsModel> Popular = new List<LatestNewsModel>();
+            DataTable popular_dt =
+                db.Select(
+                    "SELECT TOP 5 [Id],[Title],[Date],[ImagePath],[ImageValue]FROM [Post_tbl] order by(SELECT count(*) FROM [Comment_tbl]WHERE PostId=[Post_tbl].[Id]) DESC,Date DESC");
+
+            for (int i = 0; i < popular_dt.Rows.Count; i++)
+            {
+
+                DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[i]["Date"].ToString());
+                PersianDateTime persianDateTime = new PersianDateTime(date);
+                var Late = new LatestNewsModel()
+                {
+                    Id = Convert.ToInt32(popular_dt.Rows[i]["Id"]),
+                    title = popular_dt.Rows[i]["Title"].ToString(),
+                    date = persianDateTime.ToString(),
+                    ImagePath = popular_dt.Rows[i]["ImagePath"].ToString()
+                };
+                Popular.Add(Late);
+            }
+            //////// popular end
+
+            ///////Categories
+            List<CategoryModel> category = new List<CategoryModel>();
+            DataTable category_dt =
+                db.Select(
+                    "SELECT COUNT(*)as [count],[name] FROM [Categories_tbl] GROUP BY([name])");
+
+            for (int i = 0; i < popular_dt.Rows.Count; i++)
+            {
+
+                DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[i]["Date"].ToString());
+                PersianDateTime persianDateTime = new PersianDateTime(date);
+                var Late = new LatestNewsModel()
+                {
+                    Id = Convert.ToInt32(popular_dt.Rows[i]["Id"]),
+                    title = popular_dt.Rows[i]["Title"].ToString(),
+                    date = persianDateTime.ToString(),
+                    ImagePath = popular_dt.Rows[i]["ImagePath"].ToString()
+                };
+                Popular.Add(Late);
+            }
+///////////categories end
+
+
 
             var newsModelView = new NewsModelView()
             {
-                NewsModels = news
+                NewsModels = news,
+                LatestNewsModels= latest,
+                popular = Popular
             };
+
+
+            
             return View(newsModelView);
         }
 
-        public ActionResult News_Details()
+        public ActionResult News_Details(int id_news,string category,string title)
         {
-            var Datee = DateTime.Now;
-
-            PersianDateTime persian = new PersianDateTime(Datee);
-
-            var NewsModel1=new NewsModel()
+            Date_TimeStamp dateTimeStamp = new Date_TimeStamp();
+            PDBC db = new PDBC("DBConnectionString", true);
+            db.Connect();
+            DataTable dt = db.Select(
+                "SELECT [Id],[Title],[Text],[WrittenBy],[Date],[ImagePath],[ImageValue],[InGroup]FROM [TSHP_PortalCMS].[dbo].[Post_tbl]WHERE Id="+id_news);
+            /////////////comments
+            DataTable comment_dt =
+                db.Select(
+                    "SELECT [Id],[Email],[message],[Name],[PostId],[ImagePath],[ImageValue]FROM [TSHP_PortalCMS].[dbo].[Comment_tbl]WHERE PostId=" + id_news);
+            List<Comment> comment_list = new List<Comment>();
+            for (int i = 0; i < comment_dt.Rows.Count; i++)
             {
-                title = "heloo",
-                text="<h1>html</h1>"
+                
+                //////////////////replies
+                DataTable reply_dt =
+                    db.Select(
+                        "SELECT [Id],[Email],[Name],[Message],[commentId],[ImagePath],[ImageValue]FROM [TSHP_PortalCMS].[dbo].[Reply_tbl]WHERE commentId=" +
+                        comment_dt.Rows[i]["Id"]);
+                List<Reply> rep=new List<Reply>();
+
+                for (int j = 0; j < reply_dt.Rows.Count; j++)
+                {
+                    var reply=new Reply()
+                    {
+                        Name = reply_dt.Rows[i]["Name"].ToString(),
+                        Email = reply_dt.Rows[i]["Email"].ToString(),
+                        Message = reply_dt.Rows[i]["Message"].ToString(),
+                        ImagePath = reply_dt.Rows[i]["ImagePath"].ToString()
+                    };
+                    rep.Add(reply);
+                }
+
+                //////////////////replies end
+                
+
+                var comment =new Comment()
+                {
+                    Name = comment_dt.Rows[i]["Name"].ToString(),
+                    Email = comment_dt.Rows[i]["Email"].ToString(),
+                    message = comment_dt.Rows[i]["message"].ToString(),
+                    ImagePath = comment_dt.Rows[i]["ImagePath"].ToString(),
+                    Replies = rep
+                };
+                comment_list.Add(comment);
+            }
+            ///////////comments end
+            
+
+
+
+
+
+            DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[0]["Date"].ToString());
+            PersianDateTime persian = new PersianDateTime(date);
+            var NewsModel1 =new NewsModel()
+            {
+                Id = (int)dt.Rows[0]["Id"],
+                title = dt.Rows[0]["Title"].ToString(),
+                text = dt.Rows[0]["Text"].ToString(),
+                by = dt.Rows[0]["WrittenBy"].ToString(),
+                ImagePath = dt.Rows[0]["ImagePath"].ToString(),
+                day = persian.Day.ToString(),
+                year_month = persian.GetLongMonthName + "  " + persian.Year,
+                DayOfWeek = persian.GetLongDayOfWeekName,
+                InGroup = dt.Rows[0]["InGroup"].ToString(),
+                Comments = comment_list,
+                Comments__ = comment_list.Count
             };
-            //var NewsModel = new NewsModel()
-            //{
-            //    title = "موضوع" + 1,
-            //    text = "متن" + 1,
-            //    by = "نیکی",
-            //    ImagePath = "~/Resources/Images/Screenshot(106).png",
-            //    day = persian.Day.ToString(),
-            //    year_month = persian.GetLongMonthName + "  " + persian.Year,
-            //    DayOfWeek = persian.GetLongDayOfWeekName
-            //};
+            
+            
         return View(NewsModel1);
         }
 
         public ActionResult test()
         {
-            return View();
+            Date_TimeStamp dateTimeStamp=new Date_TimeStamp();
+            var date = dateTimeStamp.GetTime_Soconds(DateTime.Now).ToString();
+
+            return Content( dateTimeStamp.GetDateTime_fromUnix(date).ToString());
         }
     }
 }

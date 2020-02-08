@@ -1,0 +1,49 @@
+﻿@model PCMSP_MVC.Models.Comment
+    <li class="comments__item">
+
+        <div class="comment-entry comment comments__article">
+
+            <div class="comments__avatar">
+
+                <img src="@Model.ImagePath" alt="avatar">
+
+            </div>
+
+
+            <div class="comments__body">
+
+                <div class="d-flex--content-inline">
+
+                    <header class="comment-meta comments__header">
+                      
+                        <cite class="fn url comments__author">
+                            <a href="#" rel="external" class="h6">@Model.Name</a>
+                        </cite>
+
+                        <div class="comments__time">
+                            <time class="published" datetime="2017-03-19 10:07:00">19th March 2017, 10:07 am</time>
+                        </div>
+
+                    </header>
+
+                    <a href="#" class="btn reply">reply</a>
+                </div>
+
+                <div class="comment-content comment">
+                    <p>
+                        @Model.message
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+        <ol class="children">
+
+            @foreach (var rep in @Model.Replies)
+            {
+                @Html.Partial("_Reply",rep)
+            }
+
+        </ol>
+    </li>

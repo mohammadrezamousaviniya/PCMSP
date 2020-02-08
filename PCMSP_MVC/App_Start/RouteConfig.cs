@@ -21,8 +21,13 @@ namespace PCMSP_MVC
             );
             routes.MapRoute(
                 "ContactUS"
-                , "درباره-ما"
+                , "ارتباط-با-ما"
                 , new { controller = "Media",action= "ContactUs", id = "" }
+            );
+            routes.MapRoute(
+                name: "News",
+                url: "اخبار/{category}/{title}/{id_news}",
+                defaults: new {Controller = "Media", Action = "News_Details"}
             );
             routes.MapRoute(
                 name: "userCustomer",

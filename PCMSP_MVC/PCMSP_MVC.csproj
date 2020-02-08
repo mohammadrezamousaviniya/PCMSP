@@ -160,9 +160,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerMessage.cs" />
+    <Compile Include="Models\LatestNewsModel.cs" />
     <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\TeamMembers.cs" />
     <Compile Include="ModelView\AboutUsModelView.cs" />
     <Compile Include="ModelView\NewsModelView.cs" />
@@ -393,10 +397,12 @@
     <Content Include="Resources\CSS\web\img\zoom-img.png" />
     <Content Include="Resources\Images\amirhossein.png" />
     <Content Include="Resources\Images\Fateme.png" />
+    <Content Include="Resources\Images\logo %282%29.png" />
     <Content Include="Resources\Images\man.png" />
     <Content Include="Resources\Images\man2.png" />
     <Content Include="Resources\Images\mohammadreza.png" />
     <Content Include="Resources\Images\mohsen.png" />
+    <Content Include="Resources\Images\photo_2019-10-25_15-12-57.jpg" />
     <Content Include="Resources\Images\Screenshot %28106%29.png" />
     <Content Include="Resources\JavaScript\web\js\jquery.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\ajax-pagination.js" />
@@ -568,6 +574,9 @@
     <Content Include="Views\Media\News_Details.cshtml" />
     <Content Include="Views\Media\_CustomerMessage.cshtml" />
     <Content Include="Views\Media\_teamMember.cshtml" />
+    <Content Include="Views\Media\_Comment.cshtml" />
+    <Content Include="Views\Media\_Reply.cshtml" />
+    <Content Include="Views\Media\_LatestNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -17,6 +17,9 @@ namespace PCMSP_MVC.Models
         public string text { get; set; }
         public string tags { get; set; }
         public string ImagePath { get; set; }
+        public string InGroup { get; set; }
+        public List<Comment> Comments { get; set; }
+        public int Comments__ { get; set; }
 
     }
 }

@@ -2,8 +2,8 @@
 <article class="hentry post post-standard has-post-thumbnail sticky">
 
     <div class="post-thumb">
-        <img src="~/Resources/Images/Screenshot (106).png" alt="post">
-        <a href="~/Resources/Images/Screenshot (106).png" class="link-image js-zoom-image">
+        <img src="@Model.ImagePath" alt="post">
+        <a href="@Model.ImagePath" class="link-image js-zoom-image">
             <svg class="TSHPanda-icon TSHPanda-icon-zoom-increasing-button-outline"><use xlink:href="#TSHPanda-icon-zoom-increasing-button-outline"></use></svg>
         </a>
        
@@ -76,14 +76,14 @@
 
                 <span class="category">
                     در گروه
-                    <a href="16_news.html">اخبار</a>
+                    <a href="16_news.html">@Model.InGroup</a>
                 </span>
 
                 <span class="post__comments">
-                    <a href="#">0 <span>نظرات</span></a>
+                    <a href="#">@Model.Comments__ <span>نظرات</span></a>
                 </span>
 
-                <a href="17_news_details.html" class="btn-next">
+                <a href="@Url.Action("News_Details","Media",new {id_news=Model.Id,category="تاسیس",title=Model.title})" class="btn-next">
                     <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-right-1"><use xlink:href="#TSHPanda-icon-arrow-right-1"></use></svg>
                     <svg class="TSHPanda-icon TSHPanda-icon-arrow-right1"><use xlink:href="#TSHPanda-icon-arrow-right1"></use></svg>
                 </a>

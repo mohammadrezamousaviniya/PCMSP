@@ -9,5 +9,8 @@ namespace PCMSP_MVC.ModelView
     public class NewsModelView
     {
         public List<NewsModel> NewsModels { get; set; }
+        public List<LatestNewsModel> LatestNewsModels { get; set; }
+        public List<LatestNewsModel> popular { get; set; }
+        public List<CategoryModel> CategoryModels { get; set; }
     }
 }

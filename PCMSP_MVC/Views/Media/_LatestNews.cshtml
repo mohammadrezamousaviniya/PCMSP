@@ -1,0 +1,18 @@
+﻿@model PCMSP_MVC.Models.LatestNewsModel
+<li>
+    <article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
+        <header>
+            <div class="post-thumb">
+                <img src="@Model.ImagePath" alt="news">
+            </div>
+            <div class="post-additional-info">
+                <h6 class="post__title entry-title" itemprop="name">
+                    <a href="@Url.Action("News_Details","Media",new {id_news=Model.Id,category="تاسیس",title=Model.title})">@Model.title</a>
+                </h6>
+                <span class="post__date">
+                    <time class="entry-date published updated" datetime="2017-03-23T16:31:34+00:00">@Model.date</time>
+                </span>
+            </div>
+        </header>
+    </article>
+</li>
