@@ -2,8 +2,11 @@
 <li>
     <article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
         <header>
-            <div class="post-thumb">
-                <img src="@Model.ImagePath" alt="news">
+            <div class="post-thumb" style="  background-image: url('@Model.ImagePath');
+                                      background-size: cover;
+                                      background-position: center;
+                                      background-repeat: no-repeat;">
+                
             </div>
             <div class="post-additional-info">
                 <h6 class="post__title entry-title" itemprop="name">

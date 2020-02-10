@@ -38,7 +38,7 @@
             <aside aria-label="sidebar" class="sidebar sidebar-right">
 
                 <aside class="widget w-search">
-                    <h5 class="widget-title">Search form</h5>
+                    <h5 class="widget-title">جست و جو</h5>
                     <form method="get">
                         <div class="with-icon">
                             <input name="name" placeholder="پس از نوشتن ، Enter را بزنید " type="text">
@@ -49,11 +49,11 @@
 
                 <aside class="widget w-about">
                     <div class="site-logo">
-                        <a href="index-2.html" class="full-block"></a>
-                        <img src="img/logo.png" alt="TSHPanda">
-                        <div class="logo-text">
-                            <div class="logo-title">TSHPanda</div>
-                            <div class="logo-sub-title">app startup</div>
+                        @*<a href="@Url.Action("Index","Media")" class="full-block"></a>*@
+                        <img src="~/Resources/Images/logo (2).png" alt="TSHPanda">
+                        <div class="logo-text" style="display: flex">
+                            <div class="logo-sub-title" style="font-size: 17px">توسعه سیستم هوشمند</div>
+                            <div class="logo-title" style="margin: 8px;"> پاندا</div>
                         </div>
                     </div>
 
@@ -61,60 +61,21 @@
                         تبلیغات خودمون
                     </p>
 
-                    <a href="index-2.html" class="btn btn-border btn--with-shadow c-primary">
-                        read more
+                    <a href="@Url.Action("Index","Media")" class="btn btn-border btn--with-shadow c-primary">
+                        بیشتر
                     </a>
                 </aside>
 
                 <aside class="widget w-category">
-                    <h5 class="widget-title">Categories</h5>
+                    <h5 class="widget-title">دسته بندی ها</h5>
                     <ul class="category-list">
-                        <li>
-                            <a href="#">
-                                Entrepreneur
-                                <span class="cat-count">39</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Innovation
-                                <span class="cat-count">632</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Startup
-                                <span class="cat-count">8</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Strategy
-                                <span class="cat-count">24</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Tech
-                                <span class="cat-count">2</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Marketing
-                                <span class="cat-count">16</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Trends
-                                <span class="cat-count">9</span>
-                            </a>
-                        </li>
+                      @foreach (var cat in @Model.CategoryModels)
+                      {
+                          @Html.Partial("_categoryList",cat)
+                      }
+
                     </ul>
                 </aside>
-
-                
 
                 <aside class="widget w-latest-news">
                     <h5 class="widget-title">جدیدترین اخبار</h5>
@@ -160,38 +121,17 @@
 
                 </aside>
 
-                
-
-
-               
-
                 <aside class="widget w-tags">
-                    <h5 class="widget-title">Categories</h5>
+                    <h5 class="widget-title">دسته بندی ها</h5>
                     <ul class="tags-list">
-                        <li>
-                            <a href="#">App</a>
-                        </li>
-                        <li>
-                            <a href="#">WordPress</a>
-                        </li>
-                        <li>
-                            <a href="#">UI Kit</a>
-                        </li>
-                        <li>
-                            <a href="#">Innovation</a>
-                        </li>
-                        <li>
-                            <a href="#">Trends</a>
-                        </li>
-                        <li>
-                            <a href="#">Startup</a>
-                        </li>
-                        <li>
-                            <a href="#">Marketing</a>
-                        </li>
-                        <li>
-                            <a href="#">WordPress Themes</a>
-                        </li>
+
+                        @foreach (var cat in @Model.AllTags)
+                        {
+                            <li>
+                                <a href="#">@cat</a>
+                            </li>
+                        }
+
                     </ul>
                 </aside>
 

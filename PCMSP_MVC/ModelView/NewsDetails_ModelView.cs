@@ -6,13 +6,12 @@ using PCMSP_MVC.Models;
 
 namespace PCMSP_MVC.ModelView
 {
-    public class NewsModelView
+    public class NewsDetails_ModelView
     {
-        public List<NewsModel> NewsModels { get; set; }
+        public NewsModel NewsModel { get; set; }
         public List<LatestNewsModel> LatestNewsModels { get; set; }
         public List<LatestNewsModel> popular { get; set; }
         public List<CategoryModel> CategoryModels { get; set; }
-        public List<string> AllTags { get; set; }
 
     }
 }

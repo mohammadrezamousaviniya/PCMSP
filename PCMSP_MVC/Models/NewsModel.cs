@@ -20,6 +20,7 @@ namespace PCMSP_MVC.Models
         public string InGroup { get; set; }
         public List<Comment> Comments { get; set; }
         public int Comments__ { get; set; }
-
+        public List<string> Tags { get; set; }
+        public bool IsImportant { get; set; }
     }
 }

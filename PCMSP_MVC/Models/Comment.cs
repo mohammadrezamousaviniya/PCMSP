@@ -13,6 +13,7 @@ namespace PCMSP_MVC.Models
         public string message { get; set; }
         public string ImagePath { get; set; }
         public string ImageValue { get; set; }
+        public string Date { get; set; }
         public List<Reply> Replies { get; set; }
     }
 }

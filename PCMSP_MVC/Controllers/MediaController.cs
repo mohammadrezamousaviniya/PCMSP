@@ -90,111 +90,20 @@ namespace PCMSP_MVC.Controllers
             return View(About__Us);
         }
 
-        public ActionResult News()
+        public ActionResult News(string category,string tags,int pages)
         {
 
-            Date_TimeStamp dateTimeStamp = new Date_TimeStamp();
-            PDBC db = new PDBC("DBConnectionString", true);
-            db.Connect();
-            DataTable dt = db.Select(
-                "SELECT [Id],[Title],[Text_min],[Text],[WrittenBy],[Date],[ImagePath],[ImageValue],[InGroup] ,(SELECT count(*) FROM [Comment_tbl]WHERE PostId=[Post_tbl].[Id])as number FROM [TSHP_PortalCMS].[dbo].[Post_tbl]");
 
+            ModelFiller MF=new ModelFiller();
 
-            List<NewsModel> news=new List<NewsModel>();
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[i]["Date"].ToString());
-                PersianDateTime persian = new PersianDateTime(date);
-                news.Add(new NewsModel()
-                {
-                    Id =(int)dt.Rows[i]["Id"],
-                    title = dt.Rows[i]["Title"].ToString(),
-                    text_min= dt.Rows[i]["Text_min"].ToString(),
-                    by = dt.Rows[i]["WrittenBy"].ToString(),
-                    ImagePath = dt.Rows[i]["ImagePath"].ToString(),
-                    day = persian.Day.ToString(),
-                    year_month = persian.GetLongMonthName+"  "+ persian.Year,
-                    DayOfWeek = persian.GetLongDayOfWeekName,
-                    InGroup = dt.Rows[i]["InGroup"].ToString(),
-                    Comments__ = Convert.ToInt32(dt.Rows[i]["number"].ToString())
-
-                });
-            }
-            ///////////end news
-            
-            ///////latest news
-            List<LatestNewsModel> latest=new List<LatestNewsModel>();
-            DataTable latest_dt =
-                db.Select(
-                    "SELECT TOP 5 [Id],[Title],[Date],[ImagePath],[ImageValue] FROM [Post_tbl] order by(Date)DESC");
-
-            for (int i = 0; i < latest_dt.Rows.Count; i++)
-            {
-
-                DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[i]["Date"].ToString());
-                PersianDateTime persianDateTime=new PersianDateTime(date);
-                var Late=new LatestNewsModel()
-                {
-                    Id =Convert.ToInt32(latest_dt.Rows[i]["Id"]),
-                    title = latest_dt.Rows[i]["Title"].ToString(),
-                    date = persianDateTime.ToString(),
-                    ImagePath = latest_dt.Rows[i]["ImagePath"].ToString()
-                };
-                latest.Add(Late);
-            }
-            //////// latest end
-
-            ///////popular news
-            List<LatestNewsModel> Popular = new List<LatestNewsModel>();
-            DataTable popular_dt =
-                db.Select(
-                    "SELECT TOP 5 [Id],[Title],[Date],[ImagePath],[ImageValue]FROM [Post_tbl] order by(SELECT count(*) FROM [Comment_tbl]WHERE PostId=[Post_tbl].[Id]) DESC,Date DESC");
-
-            for (int i = 0; i < popular_dt.Rows.Count; i++)
-            {
-
-                DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[i]["Date"].ToString());
-                PersianDateTime persianDateTime = new PersianDateTime(date);
-                var Late = new LatestNewsModel()
-                {
-                    Id = Convert.ToInt32(popular_dt.Rows[i]["Id"]),
-                    title = popular_dt.Rows[i]["Title"].ToString(),
-                    date = persianDateTime.ToString(),
-                    ImagePath = popular_dt.Rows[i]["ImagePath"].ToString()
-                };
-                Popular.Add(Late);
-            }
-            //////// popular end
-
-            ///////Categories
-            List<CategoryModel> category = new List<CategoryModel>();
-            DataTable category_dt =
-                db.Select(
-                    "SELECT COUNT(*)as [count],[name] FROM [Categories_tbl] GROUP BY([name])");
-
-            for (int i = 0; i < popular_dt.Rows.Count; i++)
-            {
-
-                DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[i]["Date"].ToString());
-                PersianDateTime persianDateTime = new PersianDateTime(date);
-                var Late = new LatestNewsModel()
-                {
-                    Id = Convert.ToInt32(popular_dt.Rows[i]["Id"]),
-                    title = popular_dt.Rows[i]["Title"].ToString(),
-                    date = persianDateTime.ToString(),
-                    ImagePath = popular_dt.Rows[i]["ImagePath"].ToString()
-                };
-                Popular.Add(Late);
-            }
-///////////categories end
-
-
-
+            var News = MF.News_withQuery_filler(category,tags,pages);
             var newsModelView = new NewsModelView()
             {
-                NewsModels = news,
-                LatestNewsModels= latest,
-                popular = Popular
+                NewsModels = News,
+                LatestNewsModels= MF.LatestNewsModels_filler(),
+                popular = MF.Popular_filler(),
+                CategoryModels = MF.CategoryModels_filler(),
+                AllTags = MF.AllTagsFiller(News)
             };
 
 
@@ -204,85 +113,33 @@ namespace PCMSP_MVC.Controllers
 
         public ActionResult News_Details(int id_news,string category,string title)
         {
-            Date_TimeStamp dateTimeStamp = new Date_TimeStamp();
-            PDBC db = new PDBC("DBConnectionString", true);
-            db.Connect();
-            DataTable dt = db.Select(
-                "SELECT [Id],[Title],[Text],[WrittenBy],[Date],[ImagePath],[ImageValue],[InGroup]FROM [TSHP_PortalCMS].[dbo].[Post_tbl]WHERE Id="+id_news);
-            /////////////comments
-            DataTable comment_dt =
-                db.Select(
-                    "SELECT [Id],[Email],[message],[Name],[PostId],[ImagePath],[ImageValue]FROM [TSHP_PortalCMS].[dbo].[Comment_tbl]WHERE PostId=" + id_news);
-            List<Comment> comment_list = new List<Comment>();
-            for (int i = 0; i < comment_dt.Rows.Count; i++)
+            ModelFiller MF=new ModelFiller();
+
+            NewsDetails_ModelView modelView=new NewsDetails_ModelView()
             {
-                
-                //////////////////replies
-                DataTable reply_dt =
-                    db.Select(
-                        "SELECT [Id],[Email],[Name],[Message],[commentId],[ImagePath],[ImageValue]FROM [TSHP_PortalCMS].[dbo].[Reply_tbl]WHERE commentId=" +
-                        comment_dt.Rows[i]["Id"]);
-                List<Reply> rep=new List<Reply>();
-
-                for (int j = 0; j < reply_dt.Rows.Count; j++)
-                {
-                    var reply=new Reply()
-                    {
-                        Name = reply_dt.Rows[i]["Name"].ToString(),
-                        Email = reply_dt.Rows[i]["Email"].ToString(),
-                        Message = reply_dt.Rows[i]["Message"].ToString(),
-                        ImagePath = reply_dt.Rows[i]["ImagePath"].ToString()
-                    };
-                    rep.Add(reply);
-                }
-
-                //////////////////replies end
-                
-
-                var comment =new Comment()
-                {
-                    Name = comment_dt.Rows[i]["Name"].ToString(),
-                    Email = comment_dt.Rows[i]["Email"].ToString(),
-                    message = comment_dt.Rows[i]["message"].ToString(),
-                    ImagePath = comment_dt.Rows[i]["ImagePath"].ToString(),
-                    Replies = rep
-                };
-                comment_list.Add(comment);
-            }
-            ///////////comments end
-            
-
-
-
-
-
-            DateTime date = dateTimeStamp.GetDateTime_fromUnix(dt.Rows[0]["Date"].ToString());
-            PersianDateTime persian = new PersianDateTime(date);
-            var NewsModel1 =new NewsModel()
-            {
-                Id = (int)dt.Rows[0]["Id"],
-                title = dt.Rows[0]["Title"].ToString(),
-                text = dt.Rows[0]["Text"].ToString(),
-                by = dt.Rows[0]["WrittenBy"].ToString(),
-                ImagePath = dt.Rows[0]["ImagePath"].ToString(),
-                day = persian.Day.ToString(),
-                year_month = persian.GetLongMonthName + "  " + persian.Year,
-                DayOfWeek = persian.GetLongDayOfWeekName,
-                InGroup = dt.Rows[0]["InGroup"].ToString(),
-                Comments = comment_list,
-                Comments__ = comment_list.Count
+                NewsModel = MF.NewsModel_Detail_filler(id_news),
+                LatestNewsModels = MF.LatestNewsModels_filler(),
+                popular = MF.Popular_filler(),
+                CategoryModels = MF.CategoryModels_filler()
             };
-            
-            
-        return View(NewsModel1);
+
+
+
+
+            return View(modelView);
         }
 
         public ActionResult test()
         {
-            Date_TimeStamp dateTimeStamp=new Date_TimeStamp();
-            var date = dateTimeStamp.GetTime_Soconds(DateTime.Now).ToString();
-
-            return Content( dateTimeStamp.GetDateTime_fromUnix(date).ToString());
+            //Date_TimeStamp dateTimeStamp=new Date_TimeStamp();
+            //var date = dateTimeStamp.GetTime_Soconds(DateTime.Now).ToString();
+            //int i = 0;
+            //bool n = int.TryParse("11",out i);
+           
+           var db = new PDBC("DBConnectionString", true);
+            db.Connect();
+            int count = Convert.ToInt32(db.Select("SELECT Count(*) FROM[Post_tbl]").Rows[0][0]);
+            return Content(count.ToString());
         }
     }
 }

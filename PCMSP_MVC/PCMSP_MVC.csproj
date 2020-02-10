@@ -169,6 +169,7 @@
     <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\TeamMembers.cs" />
     <Compile Include="ModelView\AboutUsModelView.cs" />
+    <Compile Include="ModelView\NewsDetails_ModelView.cs" />
     <Compile Include="ModelView\NewsModelView.cs" />
     <Compile Include="Modules\Email\EmailJob.cs" />
     <Compile Include="Modules\Email\SendEmail.cs" />
@@ -176,6 +177,7 @@
     <Compile Include="Modules\SMS\SMSJob.cs" />
     <Compile Include="Other\AppendUrl.cs" />
     <Compile Include="Other\Date_TimeStamp.cs" />
+    <Compile Include="Other\ModelFiller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -577,6 +579,7 @@
     <Content Include="Views\Media\_Comment.cshtml" />
     <Content Include="Views\Media\_Reply.cshtml" />
     <Content Include="Views\Media\_LatestNews.cshtml" />
+    <Content Include="Views\Media\_categoryList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

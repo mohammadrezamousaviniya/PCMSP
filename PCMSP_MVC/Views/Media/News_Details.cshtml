@@ -1,4 +1,4 @@
-﻿@model PCMSP_MVC.Models.NewsModel
+﻿@model PCMSP_MVC.ModelView.NewsDetails_ModelView
 @{
     ViewBag.Title = "News_Details";
     Layout = "~/Views/masters/webMaster.cshtml";
@@ -39,7 +39,7 @@
             <aside aria-label="sidebar" class="sidebar sidebar-right">
 
                 <aside class="widget w-search">
-                    <h5 class="widget-title">Search form</h5>
+                    <h5 class="widget-title">جست و جو</h5>
                     <form method="get">
                         <div class="with-icon">
                             <input name="name" placeholder="پس از نوشتن ، Enter را بزنید " type="text">
@@ -50,74 +50,38 @@
 
                 <aside class="widget w-about">
                     <div class="site-logo">
-                        <a href="index-2.html" class="full-block"></a>
-                        <img src="img/logo.png" alt="TSHPanda">
-                        <div class="logo-text">
-                            <div class="logo-title">TSHPanda</div>
-                            <div class="logo-sub-title">app startup</div>
+                        @*<a href="@Url.Action("Index","Media")" class="full-block"></a>*@
+                        <img src="~/Resources/Images/logo (2).png" alt="TSHPanda">
+                        <div class="logo-text" style="display: flex">
+                            <div class="logo-sub-title" style="font-size: 17px">توسعه سیستم هوشمند</div>
+                            <div class="logo-title" style="margin: 8px;"> پاندا</div>
                         </div>
                     </div>
 
                     <p>
-                        Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est
-                        notare quam littera gothica, putamus parum claram, anteposuerit formas.
+                        تبلیغات خودمون
                     </p>
 
-                    <a href="index-2.html" class="btn btn-border btn--with-shadow c-primary">
-                        read more
+                    <a href="@Url.Action("Index","Media")" class="btn btn-border btn--with-shadow c-primary">
+                        بیشتر
                     </a>
                 </aside>
 
                 <aside class="widget w-category">
-                    <h5 class="widget-title">Categories</h5>
+                    <h5 class="widget-title">دسته بندی ها</h5>
                     <ul class="category-list">
-                        <li>
-                            <a href="#">
-                                Entrepreneur
-                                <span class="cat-count">39</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Innovation
-                                <span class="cat-count">632</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Startup
-                                <span class="cat-count">8</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Strategy
-                                <span class="cat-count">24</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Tech
-                                <span class="cat-count">2</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Marketing
-                                <span class="cat-count">16</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Trends
-                                <span class="cat-count">9</span>
-                            </a>
-                        </li>
+                        @foreach (var cat in @Model.CategoryModels)
+                        {
+                            @Html.Partial("_categoryList", cat)
+                        }
+
                     </ul>
                 </aside>
 
+
+
                 <aside class="widget w-latest-news">
-                    <h5 class="widget-title">Latest News</h5>
+                    <h5 class="widget-title">جدیدترین اخبار</h5>
 
                     <ul class="latest-news-control" role="tablist">
 
@@ -129,20 +93,28 @@
                             <a href="#popular" role="tab" data-toggle="tab" class="control-item">محبوب</a>
                         </li>
 
+
+
                     </ul>
 
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active" id="latest">
                             <ul class="latest-news-list">
-                                @*latest*@
-                               
+
+                                @foreach (var model in @Model.LatestNewsModels)
+                                {
+                                    @Html.Partial("_LatestNews", model)
+                                }
 
                             </ul>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="popular">
                             <ul class="latest-news-list">
-                                @*popular*@
-                               
+
+                                @foreach (var model in @Model.popular)
+                                {
+                                    @Html.Partial("_LatestNews", model)
+                                }
 
                             </ul>
                         </div>
@@ -152,38 +124,17 @@
 
                 </aside>
 
-
-
-
-
-
                 <aside class="widget w-tags">
-                    <h5 class="widget-title">Categories</h5>
+                    <h5 class="widget-title">دسته بندی ها</h5>
                     <ul class="tags-list">
-                        <li>
-                            <a href="#">App</a>
-                        </li>
-                        <li>
-                            <a href="#">WordPress</a>
-                        </li>
-                        <li>
-                            <a href="#">UI Kit</a>
-                        </li>
-                        <li>
-                            <a href="#">Innovation</a>
-                        </li>
-                        <li>
-                            <a href="#">Trends</a>
-                        </li>
-                        <li>
-                            <a href="#">Startup</a>
-                        </li>
-                        <li>
-                            <a href="#">Marketing</a>
-                        </li>
-                        <li>
-                            <a href="#">WordPress Themes</a>
-                        </li>
+
+                        @foreach (var cat in @Model.NewsModel.Tags)
+                        {
+                            <li>
+                                <a href="#">@cat</a>
+                            </li>
+                        }
+
                     </ul>
                 </aside>
 
@@ -196,7 +147,7 @@
             <article class="hentry post post-standard has-post-thumbnail sticky post-standard-details">
 
                 <div class="post-thumb">
-                    <img src="@Model.ImagePath" alt="post">
+                    <img src="@Model.NewsModel.ImagePath" alt="post">
                 </div>
 
                 <div class="post__content">
@@ -238,34 +189,34 @@
                     <div class="post__date">
 
                         <time class="published" datetime="2017-03-20 12:00:00">
-                            <a href="#" class="number">@Model.day</a>
-                            <span class="month">@Model.year_month</span>
-                            <span class="day">@Model.DayOfWeek</span>
+                            <a href="#" class="number">@Model.NewsModel.day</a>
+                            <span class="month">@Model.NewsModel.year_month</span>
+                            <span class="day">@Model.NewsModel.DayOfWeek</span>
                         </time>
 
                     </div>
 
                     <div class="post__content-info">
 
-                        <h3 class="post__title entry-title">@Model.title</h3>
+                        <h3 class="post__title entry-title">@Model.NewsModel.title</h3>
 
                         <div class="post-additional-info">
                             <span class="post__author author vcard">
                                 توسط
-                                <a href="#" class="fn">@Model.by</a>
+                                <a href="#" class="fn">@Model.NewsModel.by</a>
                             </span>
                             <span class="category">
                                 در گروه
                                 <a href="@Url.Action("News","Media")">اخبار</a>
                             </span>
                             <span class="post__comments">
-                                <a href="#">@Model.Comments__ <span>نظرات</span></a>
+                                <a href="#">@Model.NewsModel.Comments__ <span>نظرات</span></a>
                             </span>
                         </div>
 
                     </div>
                     <div>
-                        @Html.Raw(@Model.text)
+                        @Html.Raw(@Model.NewsModel.text)
 
                     </div>
                 </div>
@@ -309,7 +260,7 @@
             <div class="comments">
 
                 <div class="d-flex--content-inline">
-                    <h3>@Model.Comments.Count.ToString() نظر</h3>
+                    <h3>@Model.NewsModel.Comments.Count.ToString() نظر</h3>
 
                     <a href="#" class="btn btn--green">
                         <span class="text">Leave a Comment</span>
@@ -317,7 +268,7 @@
                 </div>
 
                 <ol class="comments__list">
-                    @foreach (var comment in @Model.Comments)
+                    @foreach (var comment in @Model.NewsModel.Comments)
                     {
                         @Html.Partial("_Comment", comment)
                     }
