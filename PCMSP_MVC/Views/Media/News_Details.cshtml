@@ -1,4 +1,5 @@
-﻿@model PCMSP_MVC.ModelView.NewsDetails_ModelView
+﻿@using System.Web.UI.WebControls
+@model PCMSP_MVC.ModelView.NewsDetails_ModelView
 @{
     ViewBag.Title = "News_Details";
     Layout = "~/Views/masters/webMaster.cshtml";
@@ -131,7 +132,7 @@
                         @foreach (var cat in @Model.NewsModel.Tags)
                         {
                             <li>
-                                <a href="#">@cat</a>
+                                <a href="@Url.Action("News","Media",new {category="همه",tags=@cat,pages=1})">@cat</a>
                             </li>
                         }
 
@@ -226,32 +227,40 @@
 
 
             <div class="pagination-arrow">
+                @if (@Model.NewsModel.Id_next != 0)
+                {
+                    <a href="@Url.Action("News_Details","Media",new {id_news=Model.NewsModel.Id_next,category=@Model.NewsModel.Category_next,title=Model.NewsModel.Title_next,pre=@Model.NewsModel.Id,
+                                 next=0})" class="btn-prev-wrap">
+                        <div class="btn-prev">
+                            <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-left-1"><use xlink:href="#TSHPanda-icon-arrow-left-1"></use></svg>
+                            <svg class="TSHPanda-icon TSHPanda-icon-arrow-left1"><use xlink:href="#TSHPanda-icon-arrow-left1"></use></svg>
+                        </div>
+                        <div class="btn-content">
+                            <div class="btn-content-title">پست بعدی</div>
+                            <p class="btn-content-subtitle">@Model.NewsModel.Title_next</p>
+                        </div>
+                    </a>
+                }
 
-                <a href="#" class="btn-prev-wrap">
-                    <div class="btn-prev">
-                        <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-left-1"><use xlink:href="#TSHPanda-icon-arrow-left-1"></use></svg>
-                        <svg class="TSHPanda-icon TSHPanda-icon-arrow-left1"><use xlink:href="#TSHPanda-icon-arrow-left1"></use></svg>
-                    </div>
-                    <div class="btn-content">
-                        <div class="btn-content-title">Next Post</div>
-                        <p class="btn-content-subtitle">Standard Post Format...</p>
-                    </div>
-                </a>
 
                 <a class="list-post" href="#">
                     <svg class="TSHPanda-icon TSHPanda-icon-menu-1"><use xlink:href="#TSHPanda-icon-menu-1"></use></svg>
                 </a>
+                @if (@Model.NewsModel.Id_pre != 0)
+                {
+                    <a href="@Url.Action("News_Details","Media",new {id_news=Model.NewsModel.Id_pre,category=@Model.NewsModel.Category_pre,title=Model.NewsModel.Title_pre,pre=0,
+                                 next=@Model.NewsModel.Id})" class="btn-next-wrap">
+                        <div class="btn-content">
+                            <div class="btn-content-title">پست قبلی</div>
+                            <p class="btn-content-subtitle">@Model.NewsModel.Title_pre</p>
+                        </div>
+                        <div class="btn-next">
+                            <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-right-1"><use xlink:href="#TSHPanda-icon-arrow-right-1"></use></svg>
+                            <svg class="TSHPanda-icon TSHPanda-icon-arrow-right1"><use xlink:href="#TSHPanda-icon-arrow-right1"></use></svg>
+                        </div>
+                    </a>
+                }
 
-                <a href="#" class="btn-next-wrap">
-                    <div class="btn-content">
-                        <div class="btn-content-title">Previous Post</div>
-                        <p class="btn-content-subtitle">Video Post Format...</p>
-                    </div>
-                    <div class="btn-next">
-                        <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-right-1"><use xlink:href="#TSHPanda-icon-arrow-right-1"></use></svg>
-                        <svg class="TSHPanda-icon TSHPanda-icon-arrow-right1"><use xlink:href="#TSHPanda-icon-arrow-right1"></use></svg>
-                    </div>
-                </a>
 
             </div>
 
@@ -274,54 +283,55 @@
                     }
 
                 </ol>
-
-                <form class="form-validate contact-form leave-reply" method="post">
+                
+                
+                <!-- Leave Comment-->
+                @using (@Html.BeginForm("SubmitComment", "userCustomer", FormMethod.Post, new { @class = "form-validate contact-form leave-reply" }))
+                {
+                    @*@Model.comment.PostId
+                    @Model.NewsModel.Id;*@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h3>Leave a Comment</h3>
+                        <h3>ارسال نظر</h3>
                     </div>
 
                     <div class="row">
 
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <div class="with-icon">
-                                <input name="name" placeholder="Your Name" type="text">
+                                @Html.TextBoxFor(m => m.comment.Name, new { placeholder = "نام کامل  یا نام شرکت", required = "required" })
                                 <svg class="TSHPanda-icon TSHPanda-icon-user"><use xlink:href="#TSHPanda-icon-user"></use></svg>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <div class="with-icon">
-                                <input name="email" placeholder="Email Adress" type="text">
+                                @Html.TextBoxFor(m => m.comment.Email, new { placeholder = "آدرس پست الکترونیک", type = "email" })
                                 <svg class="TSHPanda-icon TSHPanda-icon-message-closed-envelope-1"><use xlink:href="#TSHPanda-icon-message-closed-envelope-1"></use></svg>
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="with-icon">
-                                <textarea name="message" class="" required="" placeholder="Your Message" style="min-height: 160px;"></textarea>
+                                @Html.TextAreaFor(m=>m.comment.message,new { placeholder = "پیام کامل شما", style="min-height: 160px;" ,type="text",required = "required"})
                                 <svg class="TSHPanda-icon TSHPanda-icon-edit"><use xlink:href="#TSHPanda-icon-edit"></use></svg>
                             </div>
                         </div>
 
                         <div class="submit-block">
                             <div class="col-lg-4">
-                                <a href="#" class="btn btn--large btn--green btn--with-shadow full-width">
-                                    <span class="text">Submit</span>
-                                </a>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="submit-block-text">
-                                    You may use these HTML tags and attributes: <span>
-                                        &lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt;
-                                        &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt;
-                                        &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt;
-                                    </span>
-                                </div>
+                                <button class="btn btn--large btn--green btn--with-shadow full-width" type="submit">
+                                    <span class="text">ارسال نظر</span>
+                                </button>
                             </div>
 
                         </div>
 
                     </div>
-                </form>
+                }
+
+
+
+
+                <!-- Leave Comment end-->
             </div>
 
 

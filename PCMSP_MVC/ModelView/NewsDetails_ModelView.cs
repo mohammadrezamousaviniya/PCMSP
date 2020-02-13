@@ -12,6 +12,6 @@ namespace PCMSP_MVC.ModelView
         public List<LatestNewsModel> LatestNewsModels { get; set; }
         public List<LatestNewsModel> popular { get; set; }
         public List<CategoryModel> CategoryModels { get; set; }
-
+        public Comment comment { get; set; }
     }
 }

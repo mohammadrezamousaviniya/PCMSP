@@ -61,7 +61,8 @@
 
         <div class="post__content-info">
 
-            <a href="17_news_details.html" class="h5 post__title entry-title">@Model.title</a>
+            <a href="@Url.Action("News_Details","Media",new {id_news=Model.Id,category=@Model.Category,title=Model.title,pre=@Model.Id_pre,
+                         next=@Model.Id_next})" class="h5 post__title entry-title">@Model.title</a>
 
             <p class="post__text">
                 @Model.text_min
@@ -83,9 +84,10 @@
                     <a href="#">@Model.Comments__ <span>نظرات</span></a>
                 </span>
 
-                <a href="@Url.Action("News_Details","Media",new {id_news=Model.Id,category="تاسیس",title=Model.title})" class="btn-next">
-                    <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-right-1"><use xlink:href="#TSHPanda-icon-arrow-right-1"></use></svg>
-                    <svg class="TSHPanda-icon TSHPanda-icon-arrow-right1"><use xlink:href="#TSHPanda-icon-arrow-right1"></use></svg>
+                <a href="@Url.Action("News_Details","Media",new {id_news=Model.Id,category=@Model.Category,title=Model.title,pre=@Model.Id_pre,
+                 next=@Model.Id_next})" class="btn-next">
+                <svg class="TSHPanda-icon icon-hover TSHPanda-icon-arrow-right-1"><use xlink:href="#TSHPanda-icon-arrow-right-1"></use></svg>
+                <svg class="TSHPanda-icon TSHPanda-icon-arrow-right1"><use xlink:href="#TSHPanda-icon-arrow-right1"></use></svg>
                 </a>
 
             </div>

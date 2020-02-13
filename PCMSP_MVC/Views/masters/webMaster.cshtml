@@ -89,14 +89,14 @@
                             <a href="@Url.Action("AboutUs","Media")">درباره ما</a>
                         </li>
                         <li class="">
-                            <a href="@Url.Action("News","Media")">اخبار</a>
+                            <a href="@Url.Action("News","Media",new {category="همه",tags="همه",pages=1})">اخبار</a>
                         </li>
 
                         <li class="">
                             <a href="product.aspx">محصولات</a>
                         </li>
                         <li class="active">
-                            <a href=".">خانه</a>
+                            <a href="@Url.Action("Index","Media")">خانه</a>
                         </li>
                     </ul>
                     <ul class="nav-add">
@@ -196,7 +196,7 @@
                         <h5 class="widget-title">راهیابی سریع</h5>
                         <ul class="list list--primary">
                             <li>
-                                <a href=".">خانه</a>
+                                <a href="@Url.Action("Index","Media")">خانه</a>
                                 <svg class="TSHPanda-icon TSHPanda-icon-arrow-right">
                                     <use xlink:href="#TSHPanda-icon-arrow-right"></use>
                                 </svg>
@@ -208,7 +208,7 @@
                                 </svg>
                             </li>
                             <li>
-                                <a href="@Url.Action("News","Media")">اخبار</a>
+                                <a href="@Url.Action("News","Media",new {category="همه",tags="همه",pages=1})">اخبار</a>
                                 <svg class="TSHPanda-icon TSHPanda-icon-arrow-right">
                                     <use xlink:href="#TSHPanda-icon-arrow-right"></use>
                                 </svg>
@@ -327,7 +327,6 @@
     </footer>
 
     <!-- End Footer -->
-
     <!-- Search Popup -->
 
     <div class="search-popup search--dark">
@@ -635,6 +634,7 @@
     @Scripts.Render("~/bundles/ionrangeSlider")
     @Scripts.Render("~/bundles/parsley")
     @Scripts.Render("~/bundles/main")
+    @Scripts.Render("~/bundles/custome")
 
 
     <script>

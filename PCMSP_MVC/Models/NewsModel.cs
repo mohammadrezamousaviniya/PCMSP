@@ -22,5 +22,13 @@ namespace PCMSP_MVC.Models
         public int Comments__ { get; set; }
         public List<string> Tags { get; set; }
         public bool IsImportant { get; set; }
+        public string Category { get; set; }
+        public int Id_pre { get; set; }
+        public string Title_pre { get; set; }
+        public string Category_pre { get; set; }
+        public int Id_next { get; set; }
+        public string Title_next { get; set; }
+        public string Category_next { get; set; }
+
     }
 }

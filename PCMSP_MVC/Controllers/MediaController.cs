@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using MailKit.Net.Smtp;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -15,6 +16,7 @@ using PCMSP_MVC.ModelView;
 using PCMSP_MVC.Modules.Email;
 using PCMSP_MVC.Other;
 using MD.PersianDateTime;
+using Newtonsoft.Json;
 
 namespace PCMSP_MVC.Controllers
 {
@@ -92,43 +94,120 @@ namespace PCMSP_MVC.Controllers
 
         public ActionResult News(string category,string tags,int pages)
         {
+            PDBC db=new PDBC("DBConnectionString", true);
+            db.Connect();
+            int num = 0;
+            if (tags.Equals("همه"))
+            {
+                if (category.Equals("همه"))
+                {
+                    num = Convert.ToInt32(db.Select("SELECT Count(*) FROM[Post_tbl]").Rows[0][0]);
+                }
+                else
+                {
+                    num = Convert.ToInt32(db.Select("SELECT COUNT(*) FROM[Post_tbl] INNER JOIN [Categories_tbl] ON [Post_tbl].Id=[Categories_tbl].PostId AND [Categories_tbl].name LIKE N'" + category + "'").Rows[0][0]);
+                }
+            }
+            else
+            {
+                num = Convert.ToInt32(db.Select("SELECT COUNT(*)FROM[Post_tbl] INNER JOIN [Tags_tbl] ON [Post_tbl].Id=[Tags_tbl].[PostId] AND [Tags_tbl].[Name] LIKE N'"+tags+"'").Rows[0][0]);
+            }
 
 
-            ModelFiller MF=new ModelFiller();
 
-            var News = MF.News_withQuery_filler(category,tags,pages);
+            if (num % 5 == 0)
+            {
+                num = num / 5;
+            }
+            else
+            {
+                num = (num / 5) + 1;
+            }
+
+            List<int> p=new List<int>();
+            if (pages != 1)
+            {
+                for (int i = pages - 1; i <= num - (pages - 2); i++)
+                {
+                    p.Add(i);
+                }
+            }
+            else
+            {
+                for (int i = 1; i <= num ; i++)
+                {
+                    p.Add(i);
+                }
+            }
+
+
+            ModelFiller MF =new ModelFiller();
+
+            var News = MF.News_withQuery_filler(category,tags,pages,num);
             var newsModelView = new NewsModelView()
             {
                 NewsModels = News,
                 LatestNewsModels= MF.LatestNewsModels_filler(),
                 popular = MF.Popular_filler(),
                 CategoryModels = MF.CategoryModels_filler(),
-                AllTags = MF.AllTagsFiller(News)
+                AllTags = MF.AllTagsFiller(News),
+                pages = new PageSeparateModel()
+                {
+                    category = category,
+                    Tags = tags,
+                    pages = p,
+                    CurrentPage = pages
+                }
             };
 
-
+            
             
             return View(newsModelView);
         }
 
-        public ActionResult News_Details(int id_news,string category,string title)
+        public ActionResult News_Details(int id_news, string category, string title,int pre,int next)
         {
-            ModelFiller MF=new ModelFiller();
+            ModelFiller MF = new ModelFiller();
 
-            NewsDetails_ModelView modelView=new NewsDetails_ModelView()
+            NewsDetails_ModelView modelView = new NewsDetails_ModelView()
             {
-                NewsModel = MF.NewsModel_Detail_filler(id_news),
+                NewsModel = MF.NewsModel_Detail_filler(id_news,pre,next),
                 LatestNewsModels = MF.LatestNewsModels_filler(),
                 popular = MF.Popular_filler(),
                 CategoryModels = MF.CategoryModels_filler()
             };
 
-
-
-
             return View(modelView);
         }
 
+        public ActionResult search(string searchText)
+        {
+            ModelFiller MF = new ModelFiller();
+
+            var models=MF.Search_filler(searchText);
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < models.Count; i++)
+            {
+                result.Append("<li> <article itemscope=\"\" itemtype=\"http://schema.org/NewsArticle\" class=\"latest-news-item\"> <header> <div class=\"post-thumb\" style=\" background-image: url('");
+                result.Append(models[i].ImagePath);
+                result.Append(
+                    "'); background-size: cover; background-position: center; background-repeat: no-repeat;\"> </div><div class=\"post-additional-info\"> <h6 class=\"post__title entry-title\" itemprop=\"name\"> <a href=\"@Url.Action(\"News_Details\",\"Media\",new{id_news=");
+                result.Append(models[i].Id);
+                result.Append(",category=");
+                result.Append(models[i].Category);
+                result.Append(",title=");
+                result.Append(models[i].title);
+                result.Append(",pre=0, next=0})\">");
+                result.Append(models[i].title);
+                result.Append(
+                    "</a> </h6> <span class=\"post__date\"> <time class=\"entry-date published updated\" datetime=\"2017-03-23T16:31:34+00:00\">");
+                result.Append(models[i].date);
+                result.Append("</time> </span> </div></header> </article></li>");
+                    
+            }
+
+            return Content(result.ToString());
+        }
         public ActionResult test()
         {
             //Date_TimeStamp dateTimeStamp=new Date_TimeStamp();
@@ -140,6 +219,17 @@ namespace PCMSP_MVC.Controllers
             db.Connect();
             int count = Convert.ToInt32(db.Select("SELECT Count(*) FROM[Post_tbl]").Rows[0][0]);
             return Content(count.ToString());
+        }
+
+        public ActionResult getSearch(string st)
+        {
+            ModelFiller MF = new ModelFiller();
+            ListToModel LM=new ListToModel();
+            LM.search= MF.Search_filler(st);
+            var models = LM;
+
+
+            return View(models);
         }
     }
 }

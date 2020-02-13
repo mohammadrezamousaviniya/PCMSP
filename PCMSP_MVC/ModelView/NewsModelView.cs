@@ -13,6 +13,7 @@ namespace PCMSP_MVC.ModelView
         public List<LatestNewsModel> popular { get; set; }
         public List<CategoryModel> CategoryModels { get; set; }
         public List<string> AllTags { get; set; }
+        public PageSeparateModel pages { get; set; }
 
     }
 }

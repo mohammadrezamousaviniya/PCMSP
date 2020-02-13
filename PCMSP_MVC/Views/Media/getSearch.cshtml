@@ -1,0 +1,26 @@
+﻿@model PCMSP_MVC.ModelView.ListToModel
+
+@foreach (var mo in @Model.search)
+{
+    <li>
+        <article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
+            <header>
+                <div class="post-thumb" style="  background-image: url('@mo.ImagePath');
+                                      background-size: cover;
+                                      background-position: center;
+                                      background-repeat: no-repeat;">
+
+                </div>
+                <div class="post-additional-info">
+                    <h6 class="post__title entry-title" itemprop="name">
+                        <a href="@Url.Action("News_Details","Media",new {id_news=mo.Id,category=@mo.Category,title=mo.title,pre=0,
+                                     next=0})">@mo.title</a>
+                    </h6>
+                    <span class="post__date">
+                        <time class="entry-date published updated" datetime="2017-03-23T16:31:34+00:00">@mo.date</time>
+                    </span>
+                </div>
+            </header>
+        </article>
+    </li>
+}

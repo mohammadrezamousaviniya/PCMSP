@@ -12,5 +12,6 @@ namespace PCMSP_MVC.Models
         public string date { get; set; }
         public string ImagePath { get; set; }
         public string ImageValue { get; set; }
+        public string Category { get; set; }
     }
 }

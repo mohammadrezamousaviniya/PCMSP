@@ -84,12 +84,14 @@ namespace PCMSP_MVC
 
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
                        "~/Resources/JavaScript/web/js/main.js"));
-
+            bundles.Add(new ScriptBundle("~/bundles/custome").Include(
+                "~/Resources/JavaScript/Custome.js"));
 
             // CSS Starts 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Resources/CSS/web/css/PandaMainSiteCSS.css",
                       "~/Resources/CSS/web/fonts/fIcon/flaticon.css"));
+
         }
     }
 }

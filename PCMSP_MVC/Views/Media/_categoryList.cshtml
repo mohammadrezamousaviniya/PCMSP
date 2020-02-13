@@ -1,6 +1,6 @@
 ﻿@model PCMSP_MVC.Models.CategoryModel
 <li>
-    <a href="#">
+    <a href="@Url.Action("News","Media",new {category=@Model.name,tags="همه",pages=1})">
         @Model.name
         <span class="cat-count">@Model.count</span>
     </a>

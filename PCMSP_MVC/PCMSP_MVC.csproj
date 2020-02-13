@@ -166,9 +166,11 @@
     <Compile Include="Models\CustomerMessage.cs" />
     <Compile Include="Models\LatestNewsModel.cs" />
     <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\PageSeparateModel.cs" />
     <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\TeamMembers.cs" />
     <Compile Include="ModelView\AboutUsModelView.cs" />
+    <Compile Include="ModelView\ListToModel.cs" />
     <Compile Include="ModelView\NewsDetails_ModelView.cs" />
     <Compile Include="ModelView\NewsModelView.cs" />
     <Compile Include="Modules\Email\EmailJob.cs" />
@@ -406,6 +408,7 @@
     <Content Include="Resources\Images\mohsen.png" />
     <Content Include="Resources\Images\photo_2019-10-25_15-12-57.jpg" />
     <Content Include="Resources\Images\Screenshot %28106%29.png" />
+    <Content Include="Resources\JavaScript\Custome.js" />
     <Content Include="Resources\JavaScript\web\js\jquery.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\ajax-pagination.js" />
     <Content Include="Resources\JavaScript\web\js\js-plugins\bootstrap.js" />
@@ -580,6 +583,7 @@
     <Content Include="Views\Media\_Reply.cshtml" />
     <Content Include="Views\Media\_LatestNews.cshtml" />
     <Content Include="Views\Media\_categoryList.cshtml" />
+    <Content Include="Views\Media\getSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

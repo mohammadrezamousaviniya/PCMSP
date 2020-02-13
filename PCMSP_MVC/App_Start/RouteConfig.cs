@@ -29,17 +29,19 @@ namespace PCMSP_MVC
                 , "درباره-ما"
                 , new { controller = "Media", action = "AboutUs", id = "" }
             );
+            
             routes.MapRoute(
                 name: "News",
-                url: "اخبار/{category}/{title}/{id_news}",
-                defaults: new {Controller = "Media", Action = "News_Details"}
+                url: "اخبار/{category}/{tags}/{pages}",
+                defaults: new { Controller = "Media", Action = "News" }
             );
 
             routes.MapRoute(
-                name: "News",
-                url: "{pages}/{tags}/{category}/اخبار",
-                defaults: new { Controller = "Media", Action = "News" }
+                name: "News_Details",
+                url: "جزئیات خبر/{category}/{title}/{pre}/{id_news}/{next}",
+                defaults: new { Controller = "Media", Action = "News_Details" }
             );
+
             routes.MapRoute(
                 name: "userCustomer",
                 url: "{controller}/{action}",

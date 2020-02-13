@@ -41,10 +41,13 @@
                     <h5 class="widget-title">جست و جو</h5>
                     <form method="get">
                         <div class="with-icon">
-                            <input name="name" placeholder="پس از نوشتن ، Enter را بزنید " type="text">
+                            <input onchange="change()" id="sText" name="name" placeholder="پس از نوشتن ، Enter را بزنید " type="text">
+
                             <svg class="TSHPanda-icon TSHPanda-icon-search"><use xlink:href="#TSHPanda-icon-search"></use></svg>
                         </div>
                     </form>
+                    <ul id="searchResult" class="latest-news-list">
+                    </ul>
                 </aside>
 
                 <aside class="widget w-about">
@@ -69,10 +72,10 @@
                 <aside class="widget w-category">
                     <h5 class="widget-title">دسته بندی ها</h5>
                     <ul class="category-list">
-                      @foreach (var cat in @Model.CategoryModels)
-                      {
-                          @Html.Partial("_categoryList",cat)
-                      }
+                        @foreach (var cat in @Model.CategoryModels)
+                        {
+                            @Html.Partial("_categoryList", cat)
+                        }
 
                     </ul>
                 </aside>
@@ -90,18 +93,18 @@
                             <a href="#popular" role="tab" data-toggle="tab" class="control-item">محبوب</a>
                         </li>
 
-                        
+
 
                     </ul>
 
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active" id="latest">
                             <ul class="latest-news-list">
-                                
-                               @foreach (var model in @Model.LatestNewsModels)
-                               {
-                                   @Html.Partial("_LatestNews",model)
-                               }
+
+                                @foreach (var model in @Model.LatestNewsModels)
+                                {
+                                    @Html.Partial("_LatestNews", model)
+                                }
 
                             </ul>
                         </div>
@@ -115,7 +118,7 @@
 
                             </ul>
                         </div>
-                      
+
                     </div>
 
 
@@ -128,7 +131,7 @@
                         @foreach (var cat in @Model.AllTags)
                         {
                             <li>
-                                <a href="#">@cat</a>
+                                <a href="@Url.Action("News","Media",new {category="همه",tags=@cat,pages=1})">@cat</a>
                             </li>
                         }
 
@@ -145,7 +148,7 @@
             <main class="main">
                 @foreach (var news in Model.NewsModels)
                 {
-                    @Html.Partial("_NewsPost",news);
+                    @Html.Partial("_NewsPost", news);
                 }
 
             </main>
@@ -158,15 +161,53 @@
         <div class="row mb60">
             <div class="col-lg-12">
                 <nav class="navigation">
-                    <a href="#" class="page-numbers current"><span>1</span></a>
-                    <a href="#" class="page-numbers"><span>2</span></a>
-                    <a href="#" class="page-numbers"><span>3</span></a>
-                    <a href="#" class="page-numbers"><span>4</span></a>
-                    <a href="#" class="page-numbers"><span>...</span></a>
-                    <a href="#" class="page-numbers"><span>26</span></a>
-                    <a href="#" class="page-numbers"><span>27</span></a>
+
+                    @if (@Model.pages.pages.Count < 6)
+                    {
+                        foreach (var p in @Model.pages.pages)
+                        {
+                            if (p == @Model.pages.CurrentPage)
+                            {
+                                <a href="@Url.Action("News","Media",new {category=@Model.pages.category,tags=@Model.pages.Tags,pages=p})" class="page-numbers current"><span>@p</span></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("News","Media",new {category=@Model.pages.category,tags=@Model.pages.Tags,pages=p})" class="page-numbers"><span>@p</span></a>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < @Model.pages.pages.Count; i++)
+                        {
+                            if (@Model.pages.pages[i] == @Model.pages.CurrentPage)
+                            {
+                                <a href="@Url.Action("News","Media",new {category=@Model.pages.category,tags=@Model.pages.Tags,pages=@Model.pages.pages[i]})" class="page-numbers current"><span>@Model.pages.pages[i]</span></a>
+
+                            }
+                            else if (i < 6)
+                            {
+                                <a href="@Url.Action("News","Media",new {category=@Model.pages.category,tags=@Model.pages.Tags,pages=@Model.pages.pages[i]})" class="page-numbers"><span>@Model.pages.pages[i]</span></a>
+                            }
+                            else if (i == @Model.pages.pages.Count - 2)
+                            {
+                                <a href="@Url.Action("News","Media",new {category=@Model.pages.category,tags=@Model.pages.Tags,pages=@Model.pages.pages[i]})" class="page-numbers"><span>@Model.pages.pages[i]</span></a>
+                            }
+                            else if (i == @Model.pages.pages.Count - 1)
+                            {
+                                <a href="@Url.Action("News","Media",new {category=@Model.pages.category,tags=@Model.pages.Tags,pages=@Model.pages.pages[i]})" class="page-numbers"><span>@Model.pages.pages[i]</span></a>
+                            }
+                            else if (i == 6)
+                            {
+                                <a href="#" class="page-numbers"><span>...</span></a>
+                            }
+                        }
+                    }
                 </nav>
             </div>
         </div>
     </div>
 </div>
+
+
+
