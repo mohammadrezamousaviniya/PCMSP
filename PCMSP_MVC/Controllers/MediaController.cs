@@ -180,34 +180,7 @@ namespace PCMSP_MVC.Controllers
             return View(modelView);
         }
 
-        public ActionResult search(string searchText)
-        {
-            ModelFiller MF = new ModelFiller();
-
-            var models=MF.Search_filler(searchText);
-            StringBuilder result = new StringBuilder();
-            for (int i = 0; i < models.Count; i++)
-            {
-                result.Append("<li> <article itemscope=\"\" itemtype=\"http://schema.org/NewsArticle\" class=\"latest-news-item\"> <header> <div class=\"post-thumb\" style=\" background-image: url('");
-                result.Append(models[i].ImagePath);
-                result.Append(
-                    "'); background-size: cover; background-position: center; background-repeat: no-repeat;\"> </div><div class=\"post-additional-info\"> <h6 class=\"post__title entry-title\" itemprop=\"name\"> <a href=\"@Url.Action(\"News_Details\",\"Media\",new{id_news=");
-                result.Append(models[i].Id);
-                result.Append(",category=");
-                result.Append(models[i].Category);
-                result.Append(",title=");
-                result.Append(models[i].title);
-                result.Append(",pre=0, next=0})\">");
-                result.Append(models[i].title);
-                result.Append(
-                    "</a> </h6> <span class=\"post__date\"> <time class=\"entry-date published updated\" datetime=\"2017-03-23T16:31:34+00:00\">");
-                result.Append(models[i].date);
-                result.Append("</time> </span> </div></header> </article></li>");
-                    
-            }
-
-            return Content(result.ToString());
-        }
+        
         public ActionResult test()
         {
             //Date_TimeStamp dateTimeStamp=new Date_TimeStamp();
